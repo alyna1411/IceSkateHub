@@ -1,7 +1,8 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  background: #f4f7fb;
+  color: #1f2937;
 }
 
 #root {
@@ -12,15 +13,115 @@ body {
 
 h1 {
   margin-bottom: 0.5rem;
+  color: #1d4ed8;
 }
 
 h2 {
   margin-top: 2rem;
+  color: #1f2937;
 }
 
 .training {
   background: white;
-  padding: 1rem;
+  padding: 1.25rem;
   margin-bottom: 1rem;
-  border-radius: 6px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
+
+.training-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.training-form input {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+
+.training-form input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+button {
+  padding: 0.7rem 1.1rem;
+  margin-right: 0.5rem;
+  border: none;
+  border-radius: 8px;
+  background: #333538;
+  color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background: #4f7ff8;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* kleinere Buttons für Bearbeiten und Löschen */
+.small-button {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+/* Umschalter für Benutzerrollen */
+.role-button {
+  margin-bottom: 1rem;
+}
+
+.trainer-role {
+  background: #0f766e;
+}
+
+.trainer-role:hover {
+  background: #115e59;
+}
+
+.nutzer-role {
+  background: #e2e068;
+  color: black;
+}
+
+.nutzer-role:hover {
+  background: rgb(199, 197, 93);
+}
+
+
+/* breakpoints / responsive design */
+
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+
+  .training-form {
+    grid-template-columns: 1fr;
+  }
+
+  .training {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  button {
+    margin-bottom: 0.5rem;
+  }
+}
+
