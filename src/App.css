@@ -1,85 +1,59 @@
-/* Google Fonts passend zur Designvorlage */
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap");
 
-
-/* ============ GRUNDDESIGN ============ */
+/* ============ BASIS ============ */
 
 :root {
   --ink: #0b2a45;
   --ink-soft: #163a5c;
-
   --frost: #f5fafc;
   --glacier: #dceff7;
-
   --ice: #4fa8c9;
   --ice-dark: #2f84a6;
-
   --ember: #c23b5d;
   --ember-dark: #a32d49;
-
   --slate: #3c4a57;
   --slate-light: #6b7c89;
-
   --line: rgba(11, 42, 69, 0.1);
-
   --radius: 16px;
   --maxw: 1180px;
 }
-
 
 * {
   box-sizing: border-box;
 }
 
-
 html {
   scroll-behavior: smooth;
 }
 
-
 body {
   margin: 0;
-
   background: var(--frost);
   color: var(--slate);
-
   font-family: "Manrope", sans-serif;
-
   font-size: 16px;
   line-height: 1.65;
-
   -webkit-font-smoothing: antialiased;
 }
 
-
-#root {
-  width: 100%;
-  min-height: 100vh;
-}
-
-
+#root,
 .app {
   width: 100%;
   min-height: 100vh;
 }
 
-
 h1,
 h2,
 h3 {
   margin: 0;
-
+  color: var(--ink);
   font-family: "Fraunces", serif;
   font-weight: 500;
-
-  color: var(--ink);
 }
-
 
 p {
   margin: 0;
 }
-
 
 a {
   color: inherit;
@@ -87,404 +61,261 @@ a {
 }
 
 
-/* ============ ALLGEMEINE BUTTONS ============ */
+/* ============ BUTTONS ============ */
 
 .btn {
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
-
-  gap: 8px;
-
   padding: 14px 26px;
-
   border: 1.5px solid transparent;
   border-radius: 999px;
-
-  font-family: "Manrope", sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-
+  font: 700 15px "Manrope", sans-serif;
   cursor: pointer;
-
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease,
-    background 0.15s ease;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
-
-.btn:active {
+.btn:active,
+.small-button:active,
+.account-button:active,
+.calendar-nav-button:active {
   transform: scale(0.97);
 }
 
-
 .btn-primary {
   background: var(--ember);
-  color: #ffffff;
+  color: white;
 }
-
 
 .btn-primary:hover {
   background: var(--ember-dark);
 }
 
-
 .btn-ghost {
   background: transparent;
-  color: inherit;
 }
-
 
 .btn-ghost.on-light {
   border-color: var(--ink);
   color: var(--ink);
 }
 
-
 .btn-ghost.on-light:hover {
   background: rgba(11, 42, 69, 0.06);
 }
 
 
-/* ============ HEADER / NAVIGATION ============ */
+/* ============ HEADER / NAV ============ */
 
 .site-header {
   position: sticky;
-
   top: 0;
   z-index: 100;
-
   background: rgba(245, 250, 252, 0.92);
-
   backdrop-filter: blur(10px);
-
   border-bottom: 1px solid var(--line);
 }
 
-
 .nav {
-  width: 100%;
   max-width: var(--maxw);
-
   margin: 0 auto;
   padding: 18px 32px;
-
   display: flex;
-
   align-items: center;
   justify-content: space-between;
-
   gap: 24px;
 }
 
-
-/* IceSkateHub Logo */
-
 .logo {
   flex-shrink: 0;
-
+  color: var(--ink);
   font-family: "Fraunces", serif;
-
+  font-size: 25px;
   font-style: italic;
   font-weight: 600;
-
-  font-size: 25px;
-
-  color: var(--ink);
-
-  letter-spacing: 0.01em;
-
   cursor: pointer;
 }
 
-
 .logo span {
   color: var(--ice-dark);
-
   font-style: normal;
 }
 
-
-/* Navigationslinks */
-
 .nav-links {
   display: flex;
-
   align-items: center;
-
   gap: 28px;
-
-  list-style: none;
-
   margin: 0;
   padding: 0;
+  list-style: none;
 }
-
 
 .nav-links a {
+  color: var(--slate);
   font-size: 14px;
   font-weight: 600;
-
-  color: var(--slate);
-
   white-space: nowrap;
-
   transition: color 0.2s ease;
 }
-
 
 .nav-links a:hover {
   color: var(--ice-dark);
 }
 
-
-/* Buttons rechts */
-
 .nav-cta {
   display: flex;
-
   align-items: center;
-
   gap: 12px;
-
   flex-shrink: 0;
 }
 
-
 .nav-cta .btn {
   padding: 11px 20px;
-
   font-size: 14px;
 }
 
-/* ============ ACCOUNT MENU ============ */
+
+/* ============ ACCOUNT ============ */
 
 .account-menu {
   position: relative;
 }
 
-
 .account-button {
   width: 42px;
   height: 42px;
-
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  padding: 0;
-
   border: 1.5px solid var(--ink);
   border-radius: 50%;
-
   background: transparent;
-
   color: var(--ink);
-
   cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
-
 
 .account-button:hover {
   background: var(--ink);
-  color: #ffffff;
+  color: white;
 }
-
 
 .account-button svg {
   width: 21px;
   height: 21px;
-
   fill: none;
-
   stroke: currentColor;
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-
-/* Dropdown */
-
 .account-dropdown {
   position: absolute;
-
   top: calc(100% + 14px);
   right: 0;
-
+  z-index: 200;
   width: 270px;
-
   padding: 20px;
-
-  background: #ffffff;
-
+  background: white;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-
   box-shadow: 0 18px 45px rgba(11, 42, 69, 0.14);
-
-  z-index: 200;
 }
-
 
 .account-dropdown-header {
   display: flex;
-
   flex-direction: column;
-
   margin-bottom: 16px;
 }
 
-
 .account-dropdown-header strong {
   color: var(--ink);
-
   font-size: 16px;
 }
 
-
 .account-dropdown-header span {
-  margin-top: 2px;
-
   color: var(--slate-light);
-
   font-size: 12.5px;
 }
 
-
-/* Login / Registrierung */
-
 .account-auth-actions {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
-
   gap: 8px;
 }
 
-
-.account-auth-actions button {
+.account-auth-actions button,
+.account-role {
   padding: 9px 10px;
-
   border: 1px solid var(--line);
   border-radius: 8px;
-
-  background: var(--frost);
-
+  background: white;
   color: var(--ink);
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 13px;
-  font-weight: 600;
-
+  font: 600 13px "Manrope", sans-serif;
   cursor: pointer;
 }
 
-
-.account-auth-actions button:hover {
-  background: var(--glacier);
+.account-auth-actions button {
+  background: var(--frost);
 }
 
+.account-auth-actions button:hover,
+.account-role:hover {
+  background: var(--glacier);
+}
 
 .account-divider {
   height: 1px;
-
   margin: 18px 0;
-
   background: var(--line);
 }
 
-
 .account-label {
   display: block;
-
   margin-bottom: 9px;
-
   color: var(--slate-light);
-
   font-size: 12px;
   font-weight: 700;
-
-  text-transform: uppercase;
-
   letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
-
-
-/* Rollenumschaltung */
 
 .account-role {
   width: 100%;
-
   margin-top: 7px;
-
-  padding: 10px 12px;
-
-  border: 1px solid var(--line);
-  border-radius: 9px;
-
-  background: #ffffff;
-
-  color: var(--slate);
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 13.5px;
-  font-weight: 600;
-
   text-align: left;
-
-  cursor: pointer;
 }
-
-
-.account-role:hover {
-  background: var(--frost);
-}
-
 
 .account-role.active {
   background: var(--glacier);
-
   border-color: var(--ice);
-
   color: var(--ice-dark);
 }
 
 
-/* Hamburger */
+/* ============ HAMBURGER ============ */
 
 .nav-toggle {
   display: none;
-
   padding: 6px;
-
-  background: transparent;
-
   border: none;
-
+  background: transparent;
   cursor: pointer;
 }
 
-
 .nav-toggle span {
   display: block;
-
   width: 23px;
   height: 2px;
-
   margin: 5px 0;
-
   background: var(--ink);
-
   border-radius: 2px;
+}
+
+.mobile-contact-link {
+  display: none;
 }
 
 
@@ -492,72 +323,45 @@ a {
 
 .hero {
   padding: 90px 32px 100px;
-
   text-align: center;
-
-  background: var(--frost);
 }
-
 
 .hero-inner {
   max-width: 760px;
-
   margin: 0 auto;
 }
 
-
 .eyebrow {
   display: inline-block;
-
   margin-bottom: 14px;
-
+  color: var(--ice-dark);
   font-size: 13px;
   font-weight: 700;
-
   letter-spacing: 0.14em;
-
   text-transform: uppercase;
-
-  color: var(--ice-dark);
 }
-
 
 .hero h1 {
   font-size: clamp(40px, 5vw, 62px);
-
   line-height: 1.08;
-
-  letter-spacing: -0.01em;
 }
-
 
 .hero h1 em {
-  font-style: italic;
-
   color: var(--ice-dark);
+  font-style: italic;
 }
 
-
-.hero p.lead {
+.hero .lead {
   margin-top: 24px;
-
-  font-size: 18px;
-
   color: var(--slate);
-
-  line-height: 1.7;
+  font-size: 18px;
 }
-
 
 .hero-ctas {
   margin-top: 36px;
-
   display: flex;
-
   justify-content: center;
-
   gap: 14px;
-
   flex-wrap: wrap;
 }
 
@@ -566,652 +370,390 @@ a {
 
 .facts {
   padding: 36px 32px;
-
   background: var(--ink);
 }
 
-
 .facts-row {
   max-width: var(--maxw);
-
   margin: 0 auto;
-
   display: grid;
-
   grid-template-columns: repeat(4, 1fr);
-
   gap: 30px;
 }
 
-
 .fact {
+  color: white;
   text-align: center;
-
-  color: #ffffff;
 }
-
 
 .fact strong {
   display: block;
-
   margin-bottom: 5px;
-
   font-family: "Fraunces", serif;
-
   font-size: 21px;
   font-weight: 500;
 }
 
-
 .fact span {
-  font-size: 13.5px;
-
   color: #a9c4d6;
+  font-size: 13.5px;
 }
 
 
-/* ============ ALLGEMEINE INHALTSSEITEN ============ */
+/* ============ CONTENT SECTIONS ============ */
 
 section.block {
   min-height: 600px;
-
-  padding-top: 80px;
+  padding-top: 40px;
   padding-bottom: 90px;
-
-  padding-left: max(
-    32px,
-    calc((100vw - var(--maxw)) / 2)
-  );
-
-  padding-right: max(
-    32px,
-    calc((100vw - var(--maxw)) / 2)
-  );
+  padding-left: max(32px, calc((100vw - var(--maxw)) / 2));
+  padding-right: max(32px, calc((100vw - var(--maxw)) / 2));
 }
-
 
 .section-head {
   max-width: 680px;
-
   margin-bottom: 48px;
 }
 
-
 .section-head h1 {
   font-size: clamp(32px, 4vw, 44px);
-
   line-height: 1.15;
 }
 
-
 .section-head p {
   margin-top: 16px;
-
-  font-size: 16.5px;
-
   color: var(--slate-light);
+  font-size: 16.5px;
 }
 
 
-/* ============ ROLLENANSICHT ============ */
-
-.role-switch {
-  display: flex;
-
-  gap: 10px;
-
-  flex-wrap: wrap;
-
-  margin-bottom: 38px;
-}
-
-
-.role-button {
-  padding: 10px 18px;
-
-  border: none;
-  border-radius: 999px;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 14px;
-  font-weight: 700;
-
-  color: #ffffff;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.15s ease,
-    opacity 0.15s ease;
-}
-
-
-.role-button:hover {
-  opacity: 0.9;
-}
-
-
-.role-button:active {
-  transform: scale(0.97);
-}
-
-
-.trainer-role {
-  background: #0f766e;
-}
-
-
-.nutzer-role {
-  background: #7c3aed;
-}
-
-
-/* ============ TRAININGSFORMULAR AUS SPRINT 1 ============ */
+/* ============ TRAININGSFORMULAR ============ */
 
 .training-form {
-  display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 16px;
-
   max-width: 850px;
-
-  margin-top: 20px;
-  margin-bottom: 55px;
-
+  margin: 20px 0 55px;
   padding: 28px;
-
-  background: #ffffff;
-
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  background: white;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-
   box-shadow: 0 10px 30px rgba(11, 42, 69, 0.06);
 }
 
-
-.training-form input {
+.training-form input,
+.training-form select {
   width: 100%;
-
   padding: 13px 14px;
-
   border: 1px solid rgba(11, 42, 69, 0.16);
   border-radius: 10px;
-
   background: var(--frost);
-
   color: var(--slate);
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 15px;
+  font: 15px "Manrope", sans-serif;
 }
 
-
-.training-form input:focus {
+.training-form input:focus,
+.training-form select:focus {
   outline: none;
-
   border-color: var(--ice);
-
   box-shadow: 0 0 0 3px rgba(79, 168, 201, 0.12);
 }
 
-
-.training-form button {
+.training-form .btn {
   justify-self: start;
-
-  padding: 12px 22px;
-
-  border: none;
-  border-radius: 999px;
-
-  background: var(--ember);
-
-  color: #ffffff;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 14px;
-  font-weight: 700;
-
-  cursor: pointer;
 }
 
 
-.training-form button:hover {
-  background: var(--ember-dark);
+/* ============ KURSE & TRAININGS ============ */
+
+.courses-grid {
+  max-width: 900px;
+  display: grid;
+  gap: 18px;
 }
 
-
-/* ============ KURSE & TRAININGS (Sprint 1) ============ */
-
-section.block > h2 {
-  margin-bottom: 22px;
-
-  font-size: 28px;
-}
-
-
-.training {
-  max-width: 850px;
-
-  margin-bottom: 18px;
-
+.course-card {
   padding: 24px 26px;
-
-  background: #ffffff;
-
+  background: white;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-
   box-shadow: 0 5px 18px rgba(11, 42, 69, 0.05);
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-
-.training:hover {
+.course-card:hover {
   transform: translateY(-2px);
-
   box-shadow: 0 12px 28px rgba(11, 42, 69, 0.08);
 }
 
-
-.training h3 {
-  margin-bottom: 10px;
-
+.course-card h3 {
+  margin: 10px 0;
   font-size: 21px;
-
   font-weight: 600;
 }
 
-
-.training p {
+.course-card p {
   margin-top: 4px;
-
-  font-size: 14.5px;
-
   color: var(--slate-light);
+  font-size: 14.5px;
 }
 
-
-.training p:first-of-type {
+.tag {
   display: inline-block;
-
-  margin-top: 0;
-  margin-bottom: 10px;
-
   padding: 4px 10px;
-
-  border-radius: 999px;
-
   background: var(--glacier);
-
+  border-radius: 999px;
   color: var(--ice-dark);
-
   font-size: 12px;
   font-weight: 700;
 }
 
-
-/* Bearbeiten / Löschen */
-
-.small-button {
-  margin-top: 16px;
-  margin-right: 8px;
-
-  padding: 7px 13px;
-
-  border: none;
-  border-radius: 8px;
-
-  background: var(--ink);
-
-  color: #ffffff;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 13px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    transform 0.1s ease;
+.training-actions {
+  margin-top: 14px;
 }
 
+.small-button {
+  margin-right: 8px;
+  padding: 7px 13px;
+  border: none;
+  border-radius: 8px;
+  background: var(--ink);
+  color: white;
+  font: 600 13px "Manrope", sans-serif;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
 
 .small-button:hover {
   background: var(--ink-soft);
 }
 
 
-.small-button:active {
-  transform: scale(0.97);
-}
-
-/* ============ KALENDER & TRAININGSPLÄNE (Sprint 2) ============ */
-
-.calendar-section {
-  width: 100%;
-}
-
-
-/* Kalender-Kopfzeile */
+/* ============ KALENDER TOOLBAR ============ */
 
 .calendar-toolbar {
+  margin-bottom: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 20px;
-
-  margin-bottom: 24px;
-
   flex-wrap: wrap;
 }
-
 
 .calendar-navigation {
   display: flex;
   align-items: center;
-
   gap: 10px;
 }
 
-
 .calendar-title {
   min-width: 190px;
-
   margin: 0 8px;
-
-  font-size: 24px;
-
-  text-align: center;
-
   color: var(--ink);
+  font-size: 24px;
+  text-align: center;
 }
 
-
-/* Pfeile */
+.calendar-nav-button,
+.calendar-today-button,
+.calendar-view-button {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+}
 
 .calendar-nav-button {
   width: 42px;
   height: 42px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   padding: 0;
-
   border: 1px solid var(--line);
   border-radius: 50%;
-
-  background: #ffffff;
-
+  background: white;
   color: var(--ink);
-
   font-size: 20px;
-
-  cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    transform 0.1s ease;
 }
 
-
-.calendar-nav-button:hover {
-  background: var(--glacier);
-}
-
-
-.calendar-nav-button:active {
-  transform: scale(0.95);
-}
-
-
-/* Heute */
-
-.calendar-today-button {
-  padding: 10px 17px;
-
-  border: 1px solid var(--line);
-  border-radius: 999px;
-
-  background: #ffffff;
-
-  color: var(--ink);
-
-  font-family: "Manrope", sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-
-  cursor: pointer;
-}
-
-
+.calendar-nav-button:hover,
 .calendar-today-button:hover {
   background: var(--glacier);
 }
 
-
-/* Monat / Woche Umschalter */
+.calendar-today-button {
+  padding: 10px 17px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: white;
+  color: var(--ink);
+  font-size: 14px;
+}
 
 .calendar-view-switch {
   display: flex;
-
   padding: 4px;
-
   background: var(--glacier);
-
   border-radius: 999px;
 }
-
 
 .calendar-view-button {
   padding: 9px 18px;
-
   border: none;
   border-radius: 999px;
-
   background: transparent;
-
   color: var(--slate);
-
-  font-family: "Manrope", sans-serif;
   font-size: 14px;
-  font-weight: 700;
-
-  cursor: pointer;
 }
-
-
-.calendar-view-button:hover {
-  color: var(--ink);
-}
-
 
 .calendar-view-button.active {
-  background: #ffffff;
-
+  background: white;
   color: var(--ice-dark);
-
   box-shadow: 0 2px 8px rgba(11, 42, 69, 0.1);
 }
 
 
 /* ============ MONATSANSICHT ============ */
 
-.calendar-month {
+.calendar-month,
+.calendar-week {
   width: 100%;
-
   overflow-x: auto;
-
-  background: #ffffff;
-
+  background: white;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-
   box-shadow: 0 10px 30px rgba(11, 42, 69, 0.05);
 }
 
-
-/* Mo - So */
+.calendar-weekdays,
+.calendar-grid {
+  min-width: 850px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
 
 .calendar-weekdays {
-  min-width: 850px;
-
-  display: grid;
-
-  grid-template-columns: repeat(7, 1fr);
-
   background: var(--ink);
-
-  color: #ffffff;
-
+  color: white;
   border-radius: var(--radius) var(--radius) 0 0;
 }
 
-
 .calendar-weekdays span {
   padding: 13px;
-
   text-align: center;
-
   font-size: 13px;
   font-weight: 700;
-
-  letter-spacing: 0.04em;
 }
-
-
-/* Kalenderraster */
-
-.calendar-grid {
-  min-width: 850px;
-
-  display: grid;
-
-  grid-template-columns: repeat(7, 1fr);
-}
-
-
-/* einzelner Tag */
 
 .calendar-day {
   min-height: 135px;
-
   padding: 10px;
-
-  background: #ffffff;
-
+  background: white;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
-
 
 .calendar-day:nth-child(7n) {
   border-right: none;
 }
 
-
 .calendar-day-number {
   width: 30px;
   height: 30px;
-
+  margin-bottom: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  margin-bottom: 7px;
-
   border-radius: 50%;
-
   color: var(--ink);
-
   font-size: 14px;
   font-weight: 700;
 }
-
-
-/* Tage außerhalb des aktuellen Monats */
 
 .calendar-day.outside-month {
   background: #f8fafb;
 }
 
-
 .calendar-day.outside-month .calendar-day-number {
   color: #a6b2bc;
 }
-
-
-/* heutiger Tag */
 
 .calendar-day.today {
   background: #f3fafc;
 }
 
-
 .calendar-day.today .calendar-day-number {
   background: var(--ice-dark);
-
-  color: #ffffff;
+  color: white;
 }
-
-
-/* ============ TERMINE IM MONAT ============ */
 
 .calendar-events {
   display: flex;
-
   flex-direction: column;
-
   gap: 5px;
 }
 
 
+/* ============ KALENDER-EVENTS ============ */
+
+.calendar-event,
+.week-training {
+  border-left: 3px solid;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calendar-event:hover,
+.week-training:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(11, 42, 69, 0.1);
+}
+
+
+/* Kurs = Blau */
+
+.calendar-event.typ-kurs,
+.week-training.typ-kurs {
+  background: var(--glacier);
+  border-left-color: var(--ice-dark);
+}
+
+.calendar-event.typ-kurs strong,
+.week-training.typ-kurs > strong {
+  color: var(--ice-dark);
+}
+
+
+/* Vereinstraining = Rot */
+
+.calendar-event.typ-training,
+.week-training.typ-training {
+  background: rgba(194, 59, 93, 0.12);
+  border-left-color: var(--ember);
+}
+
+.calendar-event.typ-training strong,
+.week-training.typ-training > strong {
+  color: var(--ember-dark);
+}
+
+
+/* Termine Monatsansicht */
+
 .calendar-event {
   padding: 6px 7px;
-
-  background: var(--glacier);
-
-  border-left: 3px solid var(--ice-dark);
   border-radius: 6px;
-
   color: var(--ink-soft);
-
   font-size: 11px;
-
   line-height: 1.3;
 }
 
-
-.calendar-event strong {
-  display: block;
-
-  color: var(--ice-dark);
-
-  font-size: 11px;
-}
-
-
+.calendar-event strong,
 .calendar-event span {
   display: block;
+}
 
+.calendar-event span {
   margin-top: 2px;
-
   overflow: hidden;
-
   text-overflow: ellipsis;
-
   white-space: nowrap;
 }
 
@@ -1219,256 +761,190 @@ section.block > h2 {
 /* ============ WOCHENANSICHT ============ */
 
 .calendar-week {
-  width: 100%;
-
   display: grid;
-
   grid-template-columns: repeat(7, minmax(150px, 1fr));
-
-  overflow-x: auto;
-
-  background: #ffffff;
-
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-
-  box-shadow: 0 10px 30px rgba(11, 42, 69, 0.05);
 }
-
 
 .calendar-week-day {
   min-height: 320px;
-
+  background: white;
   border-right: 1px solid var(--line);
-
-  background: #ffffff;
 }
-
 
 .calendar-week-day:last-child {
   border-right: none;
 }
 
-
 .calendar-week-day.today {
   background: #f3fafc;
 }
 
-
 .week-day-header {
   padding: 14px 12px;
-
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
-  border-bottom: 1px solid var(--line);
-
   background: var(--frost);
+  border-bottom: 1px solid var(--line);
 }
-
-
-.week-day-header span {
-  color: var(--slate-light);
-
-  font-size: 12px;
-  font-weight: 700;
-
-  text-transform: uppercase;
-}
-
-
-.week-day-header strong {
-  margin-top: 3px;
-
-  color: var(--ink);
-
-  font-size: 16px;
-}
-
 
 .calendar-week-day.today .week-day-header {
   background: var(--glacier);
 }
 
+.week-day-header span {
+  color: var(--slate-light);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.week-day-header strong {
+  margin-top: 3px;
+  color: var(--ink);
+  font-size: 16px;
+}
 
 .week-day-events {
   padding: 10px;
-
   display: flex;
-
   flex-direction: column;
-
   gap: 10px;
 }
 
-
-/* Trainingskarte in Wochenansicht */
-
 .week-training {
   padding: 12px;
-
-  background: var(--glacier);
-
-  border-left: 3px solid var(--ice-dark);
   border-radius: 8px;
 }
 
-
-.week-training > strong {
-  color: var(--ice-dark);
-
-  font-size: 12px;
-}
-
-
 .week-training h3 {
-  margin-top: 3px;
-  margin-bottom: 5px;
-
+  margin: 3px 0 5px;
   font-family: "Manrope", sans-serif;
-
   font-size: 13px;
   font-weight: 700;
 }
 
-
 .week-training p {
-  margin-top: 2px;
-
+  margin-top: 3px;
   color: var(--slate-light);
-
   font-size: 11.5px;
 }
 
-
 .no-training {
   padding: 10px 2px;
-
   color: #9aa7b1;
-
   font-size: 12px;
+}
+
+/* ============ KALENDER-LEGENDE ============ */
+
+.calendar-legend {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--slate);
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.legend-color {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border-left: 3px solid;
+}
+
+.legend-training {
+  background: rgba(194, 59, 93, 0.12);
+  border-left-color: var(--ember);
+}
+
+.legend-course {
+  background: var(--glacier);
+  border-left-color: var(--ice-dark);
 }
 
 /* ============ FOOTER ============ */
 
 footer {
   padding: 52px 32px 28px;
-
   background: #081d30;
 }
 
-
 .footer-inner {
   max-width: var(--maxw);
-
   margin: 0 auto;
-
   display: flex;
-
   justify-content: space-between;
-
-  flex-wrap: wrap;
-
   gap: 40px;
+  flex-wrap: wrap;
 }
-
 
 .footer-inner .logo {
-  color: #ffffff;
+  color: white;
 }
-
 
 .footer-inner .logo span {
   color: #7fc4df;
 }
 
-
 .footer-description {
   max-width: 270px;
-
   margin-top: 14px;
-
   color: #7e97a8;
-
   font-size: 14px;
 }
-
 
 .footer-links {
   display: flex;
-
   gap: 55px;
-
   flex-wrap: wrap;
 }
 
-
 .footer-links h4 {
-  margin-top: 0;
-  margin-bottom: 12px;
-
-  color: #ffffff;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 13px;
-
+  margin: 0 0 12px;
+  color: white;
+  font: 700 13px "Manrope", sans-serif;
   letter-spacing: 0.05em;
-
   text-transform: uppercase;
 }
 
-
 .footer-links ul {
-  list-style: none;
-
   margin: 0;
   padding: 0;
-
   display: flex;
-
   flex-direction: column;
-
   gap: 8px;
+  list-style: none;
 }
-
 
 .footer-links a {
-  font-size: 14px;
-
   color: #9fb6c6;
-
-  transition: color 0.2s ease;
+  font-size: 14px;
 }
-
 
 .footer-links a:hover {
-  color: #ffffff;
+  color: white;
 }
-
 
 .footer-bottom {
   max-width: var(--maxw);
-
   margin: 42px auto 0;
-
   padding-top: 20px;
-
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-
   display: flex;
-
   justify-content: space-between;
-
-  flex-wrap: wrap;
-
   gap: 10px;
-
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: #6e869a;
-
   font-size: 13px;
 }
 
@@ -1480,124 +956,197 @@ footer {
     gap: 18px;
   }
 
-
   .nav-links a {
     font-size: 13px;
   }
-
 
   .nav-cta .btn {
     padding: 10px 15px;
   }
 }
 
-
 @media (max-width: 920px) {
   .facts-row {
     grid-template-columns: repeat(2, 1fr);
-
-    row-gap: 28px;
   }
 }
 
-
-/* Mobile Navigation */
-
 @media (max-width: 760px) {
-
   .nav {
-    padding: 15px 22px;
-  }
-
+  position: relative;
+  padding: 15px 22px;
+}
 
   .nav-links {
     display: none;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    padding: 12px 22px 18px;
+
+    background: rgba(245, 250, 252, 0.98);
+
+    border-bottom: 1px solid var(--line);
+
+    box-shadow: 0 10px 22px rgba(11, 42, 69, 0.08);
   }
 
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+
+    padding: 11px 0;
+
+    font-size: 15px;
+
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-links li:last-child a {
+    border-bottom: none;
+  }
 
   .nav-cta .btn-ghost {
     display: none;
   }
 
-
   .nav-toggle {
     display: block;
   }
 
+  .nav-toggle span {
+    display: block;
+    width: 23px;
+    height: 2px;
+    margin: 5px 0;
+
+    background: var(--ink);
+
+    border-radius: 2px;
+
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .mobile-contact-link {
+    display: block;
+  }
+
+  .nav-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
 
   .logo {
     font-size: 22px;
   }
 
-
   .nav-cta {
     margin-left: auto;
   }
 
-
   .nav-cta .btn-primary {
     padding: 9px 15px;
-
     font-size: 13px;
   }
-
 
   .hero {
     padding: 60px 24px 70px;
   }
 
-
   .hero h1 {
     font-size: clamp(36px, 10vw, 48px);
   }
 
-
-  .hero p.lead {
+  .hero .lead {
     font-size: 16px;
   }
-
 
   .facts {
     padding: 32px 24px;
   }
 
-
   .facts-row {
     grid-template-columns: 1fr;
   }
 
-
   section.block {
-    padding: 58px 24px 70px;
+    padding: 32px 24px 70px;
   }
-
 
   .section-head {
     margin-bottom: 36px;
   }
 
-
   .training-form {
     grid-template-columns: 1fr;
-
     padding: 20px;
   }
 
-
-  .training {
+  .course-card {
     padding: 20px;
   }
 
+  .calendar-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .calendar-navigation {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .calendar-title {
+    min-width: 0;
+    margin: 0;
+    flex: 1;
+    font-size: 20px;
+  }
+
+  .calendar-weekdays,
+  .calendar-grid {
+    min-width: 700px;
+  }
+
+  .calendar-day {
+    min-height: 110px;
+    padding: 7px;
+  }
+
+  .calendar-week {
+    grid-template-columns: repeat(7, 145px);
+  }
 
   footer {
     padding: 45px 24px 26px;
   }
 
-
   .footer-inner {
     flex-direction: column;
   }
-
 
   .footer-links {
     gap: 35px;

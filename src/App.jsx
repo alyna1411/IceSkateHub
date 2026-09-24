@@ -16,89 +16,136 @@ function erstelleDemoTrainings() {
       id: crypto.randomUUID(),
       art: "Eiskunstlauf Anfänger:innen",
       altersgruppe: "ab 12 Jahren",
-      datum: datumInTagen(18),
+      datum: datumInTagen(34),
       uhrzeit: "17:00",
       trainer: "A",
+        typ: "kurs",
     },
     {
       id: crypto.randomUUID(),
       art: "Eislaufschule Kinder",
       altersgruppe: "4–10 Jahre",
-      datum: datumInTagen(19),
+      datum: datumInTagen(35),
       uhrzeit: "16:00",
       trainer: "B",
+         typ: "kurs",
     },
     {
       id: crypto.randomUUID(),
       art: "Eishockey Jugend",
       altersgruppe: "10–17 Jahre",
-      datum: datumInTagen(19),
+      datum: datumInTagen(35),
       uhrzeit: "18:30",
       trainer: "C",
+         typ: "training"
     },
     {
       id: crypto.randomUUID(),
       art: "Eiskunstlauf Damen",
       altersgruppe: "ab 18 Jahren",
-      datum: datumInTagen(22),
+      datum: datumInTagen(38),
       uhrzeit: "18:00",
       trainer: "A",
+       typ: "training"
     },
     {
       id: crypto.randomUUID(),
-      art: "Eishockey U13 Nachwuchs",
-      altersgruppe: "ab 10 Jahren",
-      datum: datumInTagen(24),
+      art: "Eishockey U13",
+      altersgruppe: "9-13 Jahre",
+      datum: datumInTagen(40),
       uhrzeit: "10:00",
       trainer: "C",
+       typ: "training"
     },
     {
       id: crypto.randomUUID(),
       art: "Eislaufschule Kinder",
       altersgruppe: "4–10 Jahre",
-      datum: datumInTagen(25),
-      uhrzeit: "10:00",
+      datum: datumInTagen(40),
+      uhrzeit: "12:00",
       trainer: "B",
+       typ: "kurs",
     },
     {
       id: crypto.randomUUID(),
       art: "Eishockey Jugend",
       altersgruppe: "10–17 Jahre",
-      datum: datumInTagen(25),
+      datum: datumInTagen(40),
       uhrzeit: "13:00",
       trainer: "C",
+       typ: "training",
     },
     {
       id: crypto.randomUUID(),
       art: "Eiskunstlauf Fortgeschrittene",
       altersgruppe: "ab 12 Jahren",
-      datum: datumInTagen(26),
+      datum: datumInTagen(43),
       uhrzeit: "18:30",
       trainer: "A",
+       typ: "kurs",
     },
     {
       id: crypto.randomUUID(),
       art: "Eishockey Herren",
       altersgruppe: "ab 18 Jahren",
-      datum: datumInTagen(26),
+      datum: datumInTagen(43),
       uhrzeit: "20:00",
       trainer: "C",
+       typ: "training"
     },
     {
       id: crypto.randomUUID(),
       art: "Eislaufschule Erwachsene",
       altersgruppe: "ab 18 Jahren",
-      datum: datumInTagen(28),
+      datum: datumInTagen(45),
       uhrzeit: "16:30",
       trainer: "B",
+       typ: "kurs",
     },
     {
       id: crypto.randomUUID(),
       art: "Eiskunstlauf Schnupperkurs",
       altersgruppe: "Alle Altersgruppen",
-      datum: datumInTagen(28),
+      datum: datumInTagen(45),
       uhrzeit: "19:00",
       trainer: "A",
+       typ: "kurs",
+    },
+    {
+      id: crypto.randomUUID(),
+      art: "Eislaufschule Schnupperkurs",
+      altersgruppe: "Alle Altersgruppen",
+      datum: datumInTagen(49),
+      uhrzeit: "10:00",
+      trainer: "B",
+       typ: "kurs",
+    },
+    {
+      id: crypto.randomUUID(),
+      art: "Eislaufschule Nachwuchs",
+      altersgruppe: "4-10 Jahre",
+      datum: datumInTagen(49),
+      uhrzeit: "12:00",
+      trainer: "B",
+       typ: "kurs",
+    },
+    {
+      id: crypto.randomUUID(),
+      art: "Eishockey Damen",
+      altersgruppe: "ab 18 Jahren",
+      datum: datumInTagen(50),
+      uhrzeit: "11:00",
+      trainer: "C",
+       typ: "kurs"
+    },
+    {
+      id: crypto.randomUUID(),
+      art: "Eishockey U17",
+      altersgruppe: "15-17 Jahre",
+      datum: datumInTagen(50),
+      uhrzeit: "15:00",
+      trainer: "C",
+       typ: "training"
     },
   ]
 }
@@ -115,6 +162,7 @@ function App() {
     datum: "",
     uhrzeit: "",
     trainer: "",
+    typ: "kurs",
   })
 
   const [bearbeitungsId, setBearbeitungsId] = useState(null)
@@ -124,6 +172,7 @@ function App() {
 
   // Account-Menü in der Navigation
   const [accountMenuOpen, setAccountMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   // Kalenderansicht: Monat oder Woche
   const [kalenderAnsicht, setKalenderAnsicht] = useState("monat")
@@ -169,6 +218,7 @@ function App() {
       datum: "",
       uhrzeit: "",
       trainer: "",
+      typ: "kurs",
     })
   }
 
@@ -182,6 +232,7 @@ function App() {
       datum: training.datum,
       uhrzeit: training.uhrzeit,
       trainer: training.trainer,
+      typ: training.typ,
     })
   }
 
@@ -190,7 +241,9 @@ function App() {
     setTrainings(trainings.filter((training) => training.id !== id))
   }
 
-  // Kalenderübersicht - Trainings für einen bestimmten Kalendertag ermitteln
+  // KALENDER Funktion
+  
+  // Trainings für einen bestimmten Kalendertag ermitteln
   const trainingsFuerDatum = (datum) => {
   const jahr = datum.getFullYear()
   const monat = String(datum.getMonth() + 1).padStart(2, "0")
@@ -203,7 +256,102 @@ function App() {
     .sort((a, b) => a.uhrzeit.localeCompare(b.uhrzeit))
   }
 
+  // Montag einer Woche ermitteln
+  const startDerWoche = (datum) => {
+    const neuesDatum = new Date(datum)
+    const wochentag = neuesDatum.getDay()
+
+    const differenz =
+      wochentag === 0 ? -6 : 1 - wochentag
+
+    neuesDatum.setDate(neuesDatum.getDate() + differenz)
+    neuesDatum.setHours(0, 0, 0, 0)
+
+    return neuesDatum
+  }
+  
+  // 42 Kalendertage für die Monatsansicht erzeugen
+  const tageFuerMonatsansicht = () => {
+    const jahr = kalenderDatum.getFullYear()
+    const monat = kalenderDatum.getMonth()
+
+    const ersterTagDesMonats = new Date(jahr, monat, 1)
+    const ersterKalendertag = startDerWoche(ersterTagDesMonats)
+
+    return Array.from({ length: 42 }, (_, index) => {
+      const datum = new Date(ersterKalendertag)
+      datum.setDate(ersterKalendertag.getDate() + index)
+
+      return datum
+    })
+  }
+
+  // Sieben Tage für die Wochenansicht erzeugen
+  const tageFuerWochenansicht = () => {
+    const montag = startDerWoche(kalenderDatum)
+
+    return Array.from({ length: 7 }, (_, index) => {
+      const datum = new Date(montag)
+      datum.setDate(montag.getDate() + index)
+
+      return datum
+    })
+  }
+
+
+  // Zum vorherigen Zeitraum wechseln
+  const vorherigerZeitraum = () => {
+    const neuesDatum = new Date(kalenderDatum)
+
+    if (kalenderAnsicht === "monat") {
+      neuesDatum.setMonth(neuesDatum.getMonth() - 1)
+    } else {
+      neuesDatum.setDate(neuesDatum.getDate() - 7)
+    }
+
+    setKalenderDatum(neuesDatum)
+  }
+
+  // Zum nächsten Zeitraum wechseln
+  const naechsterZeitraum = () => {
+    const neuesDatum = new Date(kalenderDatum)
+
+    if (kalenderAnsicht === "monat") {
+      neuesDatum.setMonth(neuesDatum.getMonth() + 1)
+    } else {
+      neuesDatum.setDate(neuesDatum.getDate() + 7)
+    }
+
+    setKalenderDatum(neuesDatum)
+  }
+
+
+  // Zum heutigen Datum zurückkehren
+  const geheZuHeute = () => {
+    setKalenderDatum(new Date())
+  }
+
+
+  // Prüfen, ob ein Datum heute ist
+  const istHeute = (datum) => {
+    const heute = new Date()
+
+    return (
+      datum.getDate() === heute.getDate() &&
+      datum.getMonth() === heute.getMonth() &&
+      datum.getFullYear() === heute.getFullYear()
+    )
+  }
+
+  // Menu schließen
+  const wechsleSeite = (seite) => {
+    setAktiveSeite(seite)
+    setMenuOpen(false)
+  }
+
+
   return (
+
   <div className="app">
 
     {/* ============ HEADER / NAV ============ */}
@@ -221,13 +369,13 @@ function App() {
           IceSkate<span>Hub</span>
         </a>
 
-        <ul className="nav-links">
+        <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
           <li>
             <a
               href="#home"
               onClick={(e) => {
                 e.preventDefault()
-                setAktiveSeite("home")
+                wechsleSeite("home")
               }}
             >
               Startseite
@@ -239,7 +387,7 @@ function App() {
               href="#courses"
               onClick={(e) => {
                 e.preventDefault()
-                setAktiveSeite("trainings")
+                wechsleSeite("trainings")
               }}
             >
               Kurse & Trainings
@@ -251,7 +399,7 @@ function App() {
               href="#calendar"
               onClick={(e) => {
                 e.preventDefault()
-                setAktiveSeite("kalender")
+                wechsleSeite("kalender")
               }}
             >
               Kalender & Trainingspläne
@@ -263,7 +411,7 @@ function App() {
               href="#booking"
               onClick={(e) => {
                 e.preventDefault()
-                setAktiveSeite("buchung")
+                wechsleSeite("buchung")
               }}
             >
               Buchung
@@ -275,10 +423,21 @@ function App() {
               href="#about"
               onClick={(e) => {
                 e.preventDefault()
-                setAktiveSeite("ueber-uns")
+                wechsleSeite("ueber-uns")
               }}
             >
               Über uns
+            </a>
+          </li>
+          <li className="mobile-contact-link">
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault()
+                wechsleSeite("kontakt")
+              }}
+            >
+              Kontakt
             </a>
           </li>
         </ul>
@@ -387,9 +546,11 @@ function App() {
         </div>
 
         <button
-          className="nav-toggle"
+          className={`nav-toggle ${menuOpen ? "open" : ""}`}
           type="button"
           aria-label="Menü öffnen"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(!menuOpen)}
         >
           <span></span>
           <span></span>
@@ -476,7 +637,7 @@ function App() {
       )}
 
 
-      {/* ============ KURSE & TRAININGS (Sprint 1) ============ */}
+      {/* ============ KURSE & TRAININGS ============ */}
       {aktiveSeite === "trainings" && (
         <section className="block" id="courses">
 
@@ -484,7 +645,7 @@ function App() {
             <span className="eyebrow">Kurse & Trainings</span>
             <h1>Kurs- und Trainingsangebote</h1>
             <p>
-              Aktuelle Kurse und Trainings des Eissportvereins H. e. V.
+              Entdecke aktuelle Kurse und Trainingsangebote des Eissportvereins H. e. V. für verschiedene Alters- und Leistungsgruppen.
             </p>
           </div>
 
@@ -555,6 +716,19 @@ function App() {
                   }
                 />
 
+                <select
+                  value={neuesTraining.typ}
+                  onChange={(e) =>
+                    setNeuesTraining({
+                      ...neuesTraining,
+                      typ: e.target.value,
+                    })
+                  }
+                >
+                  <option value="kurs">Buchbarer Kurs</option>
+                  <option value="training">Vereinstraining</option>
+                </select>
+
                 <button type="submit" className="btn btn-primary">
                   {bearbeitungsId !== null
                     ? "Speichern"
@@ -611,27 +785,266 @@ function App() {
         </section>
       )}
 
+    
+    {/* ============ KALENDER & TRAININGSPLÄNE ============ */}
+    {aktiveSeite === "kalender" && (
+      <section className="block calendar-section" id="calendar">
 
-      {/* ============ KALENDER (Sprint 2) ============ */}
-      {aktiveSeite === "kalender" && (
-        <section className="block" id="calendar">
-          <div className="section-head">
-            <span className="eyebrow">Kalender & Trainingspläne</span>
-            <h1>Kalenderübersicht</h1>
-            <p>
-              Diese Funktion wird im folgenden Sprint umgesetzt.
-            </p>
+        <div className="section-head">
+          <span className="eyebrow">Kalender & Trainingspläne</span>
+
+          <h1>Alles auf einem Blick</h1>
+
+          <p>Kalenderübersicht buchbarer Kurse sowie aktuell ausgehängte Trainingspläne
+            für Vereinsgruppen und Teams.
+          </p>
+        </div>
+
+
+    {/* Kalendersteuerung */}
+    <div className="calendar-toolbar">
+
+      <div className="calendar-navigation">
+        <button
+          type="button"
+          className="calendar-nav-button"
+          onClick={vorherigerZeitraum}
+          aria-label="Vorheriger Zeitraum"
+        >
+          ←
+        </button>
+
+        <h2 className="calendar-title">
+          {kalenderAnsicht === "monat"
+            ? kalenderDatum.toLocaleDateString("de-DE", {
+                month: "long",
+                year: "numeric",
+              })
+            : `${tageFuerWochenansicht()[0].toLocaleDateString(
+                "de-DE",
+                {
+                  day: "2-digit",
+                  month: "2-digit",
+                }
+              )} – ${tageFuerWochenansicht()[6].toLocaleDateString(
+                "de-DE",
+                {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                }
+              )}`}
+        </h2>
+
+        <button
+          type="button"
+          className="calendar-nav-button"
+          onClick={naechsterZeitraum}
+          aria-label="Nächster Zeitraum"
+        >
+          →
+        </button>
+
+        <button
+          type="button"
+          className="calendar-today-button"
+          onClick={geheZuHeute}
+        >
+          Heute
+        </button>
+      </div>
+
+      {/* Wechsel Monat / Woche */}
+      <div className="calendar-view-switch">
+
+        <button
+          type="button"
+          className={
+            kalenderAnsicht === "monat"
+              ? "calendar-view-button active"
+              : "calendar-view-button"
+          }
+          onClick={() => setKalenderAnsicht("monat")}
+        >
+          Monat
+        </button>
+
+        <button
+          type="button"
+          className={
+            kalenderAnsicht === "woche"
+              ? "calendar-view-button active"
+              : "calendar-view-button"
+          }
+          onClick={() => setKalenderAnsicht("woche")}
+        >
+          Woche
+        </button>
+
+      </div>
+    </div>
+
+    <div className="calendar-legend">
+      <div className="legend-item">
+        <span className="legend-color legend-training"></span>
+        <span>Vereinstraining</span>
+      </div>
+
+      <div className="legend-item">
+        <span className="legend-color legend-course"></span>
+        <span>Buchbarer Kurs</span>
+      </div>
+    </div>
+
+    {/* ============ MONATSANSICHT ============ */}
+    {kalenderAnsicht === "monat" && (
+      <div className="calendar-month">
+
+        <div className="calendar-weekdays">
+          <span>Mo</span>
+          <span>Di</span>
+          <span>Mi</span>
+          <span>Do</span>
+          <span>Fr</span>
+          <span>Sa</span>
+          <span>So</span>
+        </div>
+
+
+        <div className="calendar-grid">
+
+          {tageFuerMonatsansicht().map((datum) => {
+            const tagesTrainings = trainingsFuerDatum(datum)
+
+            const istAktuellerMonat =
+              datum.getMonth() === kalenderDatum.getMonth()
+
+            return (
+              <div
+                key={datum.toISOString()}
+                className={
+                  `calendar-day ${
+                    !istAktuellerMonat
+                      ? "outside-month"
+                      : ""
+                  } ${
+                    istHeute(datum)
+                      ? "today"
+                      : ""
+                  }`
+                }
+              >
+
+                <div className="calendar-day-number">
+                  {datum.getDate()}
+                </div>
+
+
+                <div className="calendar-events">
+
+                  {tagesTrainings.map((training) => (
+                    <div
+                      key={training.id}
+                      className={`calendar-event typ-${training.typ}`}
+                    >
+                      <strong>
+                        {training.uhrzeit}
+                      </strong>
+
+                      <span>
+                        {training.art}
+                      </span>
+                    </div>
+                  ))}
+
+                </div>
+
+              </div>
+            )
+          })}
+
+        </div>
+      </div>
+    )}
+
+
+    {/* ============ WOCHENANSICHT ============ */}
+    {kalenderAnsicht === "woche" && (
+      <div className="calendar-week">
+
+        {tageFuerWochenansicht().map((datum) => {
+          const tagesTrainings = trainingsFuerDatum(datum)
+
+          return (
+            <div
+              key={datum.toISOString()}
+              className={
+                istHeute(datum)
+                  ? "calendar-week-day today"
+                  : "calendar-week-day"
+              }
+            >
+
+              <div className="week-day-header">
+                <span>
+                  {datum.toLocaleDateString("de-DE", {
+                    weekday: "short",
+                  })}
+                </span>
+
+                <strong>
+                  {datum.toLocaleDateString("de-DE", {
+                    day: "2-digit",
+                    month: "2-digit",
+                  })}
+                </strong>
+              </div>
+
+
+              <div className="week-day-events">
+
+                {tagesTrainings.length === 0 && (
+                  <p className="no-training">
+                    - / -
+                  </p>
+                )}
+
+
+                {tagesTrainings.map((training) => (
+                  <div
+                    key={training.id}
+                    className={`week-training typ-${training.typ}`}
+                  >
+                    <strong>
+                      {training.uhrzeit}
+                    </strong>
+                    <h3>
+                      {training.art}
+                    </h3>
+                    <p>
+                      {training.altersgruppe}
+                    </p>
+                    <p>
+                      Trainer:in: {training.trainer}
+                    </p>
+                  </div>
+                ))} 
+                </div>
+              </div>
+              )
+            })}
           </div>
-        </section>
-      )}
+        )}
+      </section>
+    )}
 
 
-      {/* ============ BUCHUNG (Sprint 3)============ */}
+      {/* ============ BUCHUNG ============ */}
       {aktiveSeite === "buchung" && (
         <section className="block" id="booking">
           <div className="section-head">
             <span className="eyebrow">Buchung</span>
-            <h1>Kursbuchung</h1>
+            <h1>Kurs oder Training buchen</h1>
             <p>
               Die digitale Buchungs- und Stornierungsfunktion wird in
               einem späteren Sprint umgesetzt.
@@ -641,7 +1054,7 @@ function App() {
       )}
 
 
-      {/* ============ ÜBER UNS (Sprint 4)============ */}
+      {/* ============ ÜBER UNS ============ */}
       {aktiveSeite === "ueber-uns" && (
         <section className="block" id="about">
           <div className="section-head">
@@ -657,7 +1070,7 @@ function App() {
       )}
 
 
-      {/* ============ KONTAKT (Sprint 4)============ */}
+      {/* ============ KONTAKT ============ */}
       {aktiveSeite === "kontakt" && (
         <section className="block" id="contact">
           <div className="section-head">
@@ -672,6 +1085,7 @@ function App() {
 
     </main>
 
+
     {/* ============ FOOTER ============ */}
     <footer>
       <div className="footer-inner">
@@ -683,6 +1097,7 @@ function App() {
             onClick={(e) => {
               e.preventDefault()
               setAktiveSeite("home")
+              setMenuOpen(false)
             }}
           >
             IceSkate<span>Hub</span>
@@ -707,6 +1122,7 @@ function App() {
                   onClick={(e) => {
                     e.preventDefault()
                     setAktiveSeite("home")
+                    setMenuOpen(false)
                   }}
                 >
                   Startseite
@@ -719,6 +1135,7 @@ function App() {
                   onClick={(e) => {
                     e.preventDefault()
                     setAktiveSeite("trainings")
+                    setMenuOpen(false)
                   }}
                 >
                   Kurse & Trainings
@@ -731,6 +1148,7 @@ function App() {
                   onClick={(e) => {
                     e.preventDefault()
                     setAktiveSeite("kalender")
+                    setMenuOpen(false)
                   }}
                 >
                   Kalender & Trainingspläne
@@ -743,6 +1161,7 @@ function App() {
                   onClick={(e) => {
                     e.preventDefault()
                     setAktiveSeite("ueber-uns")
+                    setMenuOpen(false)
                   }}
                 >
                   Über uns
@@ -755,6 +1174,7 @@ function App() {
                   onClick={(e) => {
                     e.preventDefault()
                     setAktiveSeite("kontakt")
+                    setMenuOpen(false)
                   }}
                 >
                   Kontakt
