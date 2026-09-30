@@ -872,6 +872,245 @@ section.block {
   border-left-color: var(--ice-dark);
 }
 
+/* ============ FILTERFUNKTION ============ */
+
+.filter-section {
+  margin-bottom: 28px;
+}
+
+.filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 0;
+  border: none;
+  background: transparent;
+
+  color: var(--ink);
+  font: 700 15px "Manrope", sans-serif;
+
+  cursor: pointer;
+}
+
+.filter-toggle:hover {
+  color: var(--ice-dark);
+}
+
+.filter-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.training-filters {
+  margin-top: 18px;
+
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+
+/* ============ KURS- & TRAININGS-AKTIONEN ============ */
+
+.course-card .training-actions {
+  margin-top: 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.course-action-button {
+  min-height: 40px;
+  padding: 9px 18px;
+
+  font-size: 13.5px;
+  white-space: nowrap;
+}
+
+
+/* ============ BUCHUNG & TEILNAHMEANFRAGE ============ */
+
+.booking-navigation {
+  justify-content: flex-start;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.booking-empty-message {
+  color: var(--slate-light);
+  font-size: 15px;
+}
+
+
+/* Ausgewählter Kurs / Training */
+
+.booking-course-summary {
+  max-width: 760px;
+  padding: 24px 28px;
+
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+
+  box-shadow: 0 10px 28px rgba(11, 42, 69, 0.05);
+}
+
+.booking-course-summary h2 {
+  margin-top: 12px;
+  margin-bottom: 14px;
+
+  color: var(--ink);
+}
+
+.booking-course-summary p {
+  margin-top: 5px;
+  color: var(--slate-light);
+  font-size: 14px;
+}
+
+
+/* Formular */
+
+.booking-form {
+  max-width: 760px;
+  margin-top: 28px;
+  padding: 28px;
+
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+
+  box-shadow: 0 12px 32px rgba(11, 42, 69, 0.06);
+}
+
+.booking-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-field.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 13px 14px;
+
+  border: 1px solid var(--line);
+  border-radius: 10px;
+
+  background: var(--frost);
+  color: var(--ink);
+
+  font: 500 14px "Manrope", sans-serif;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.form-field input::placeholder {
+  color: var(--slate-light);
+}
+
+.form-field input:focus {
+  outline: none;
+
+  background: white;
+  border-color: var(--ice);
+
+  box-shadow: 0 0 0 3px rgba(79, 168, 201, 0.12);
+}
+
+/* Buttons unten */
+
+.booking-form-actions {
+  margin-top: 28px;
+  padding-top: 22px;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+
+  border-top: 1px solid var(--line);
+}
+
+.booking-form-actions .form-action-button {
+  min-width: 170px;
+  min-height: 50px;
+  padding: 11px 22px;
+}
+
+/* Primäre Aktion ausdrücklich hervorheben */
+.booking-form-actions .btn-primary {
+  background: var(--ember);
+  border-color: var(--ember);
+  color: white;
+}
+
+.booking-form-actions .btn-primary:hover {
+  background: var(--ember-dark);
+  border-color: var(--ember-dark);
+}
+
+
+/* Erfolgsmeldung */
+
+.booking-success {
+  max-width: 760px;
+  margin-top: 24px;
+  padding: 18px 20px;
+
+  background: var(--glacier);
+  border: 1px solid rgba(79, 168, 201, 0.25);
+  border-radius: 12px;
+
+  color: var(--ink);
+}
+
+.booking-success strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.booking-success p {
+  color: var(--slate);
+}
+
+.calendar-event.clickable,
+.week-training.clickable {
+  cursor: pointer;
+}
+
+.calendar-event.clickable:hover,
+.week-training.clickable:hover {
+  box-shadow: 0 8px 18px rgba(11, 42, 69, 0.14);
+}
+
 /* ============ FOOTER ============ */
 
 footer {
@@ -1138,6 +1377,53 @@ footer {
 
   .calendar-week {
     grid-template-columns: repeat(7, 145px);
+  }
+
+  .training-filters {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .filter-group {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Buchung & Anfrage mobil */
+
+  .booking-course-summary {
+    padding: 20px;
+  }
+
+  .booking-form {
+    padding: 20px;
+  }
+
+  .booking-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-field.full-width {
+    grid-column: auto;
+  }
+
+  .booking-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .booking-form-actions .btn {
+    width: 100%;
+  }
+
+  .course-card .training-actions {
+    align-items: flex-start;
+  }
+
+  .course-action-button {
+    width: auto;
+    min-height: 38px;
+    padding: 8px 16px;
+    font-size: 13px;
   }
 
   footer {

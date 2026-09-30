@@ -15,7 +15,9 @@ function erstelleDemoTrainings() {
     {
       id: crypto.randomUUID(),
       art: "Eiskunstlauf Anfänger:innen",
-      altersgruppe: "ab 12 Jahren",
+      altersgruppe: "12-17 Jahre",
+      minAlter: 12,
+      maxAlter: 17,
       datum: datumInTagen(34),
       uhrzeit: "17:00",
       trainer: "A",
@@ -24,7 +26,9 @@ function erstelleDemoTrainings() {
     {
       id: crypto.randomUUID(),
       art: "Eislaufschule Kinder",
-      altersgruppe: "4–10 Jahre",
+      altersgruppe: "4–11 Jahre",
+      minAlter: 4,
+      maxAlter: 11,
       datum: datumInTagen(35),
       uhrzeit: "16:00",
       trainer: "B",
@@ -33,7 +37,9 @@ function erstelleDemoTrainings() {
     {
       id: crypto.randomUUID(),
       art: "Eishockey Jugend",
-      altersgruppe: "10–17 Jahre",
+      altersgruppe: "12–17 Jahre",
+      minAlter: 12,
+      maxAlter: 17,
       datum: datumInTagen(35),
       uhrzeit: "18:30",
       trainer: "C",
@@ -43,6 +49,8 @@ function erstelleDemoTrainings() {
       id: crypto.randomUUID(),
       art: "Eiskunstlauf Damen",
       altersgruppe: "ab 18 Jahren",
+      minAlter: 18,
+      maxAlter: 99,
       datum: datumInTagen(38),
       uhrzeit: "18:00",
       trainer: "A",
@@ -52,6 +60,8 @@ function erstelleDemoTrainings() {
       id: crypto.randomUUID(),
       art: "Eishockey U13",
       altersgruppe: "9-13 Jahre",
+      minAlter: 9,
+      maxAlter: 13,
       datum: datumInTagen(40),
       uhrzeit: "10:00",
       trainer: "C",
@@ -60,7 +70,9 @@ function erstelleDemoTrainings() {
     {
       id: crypto.randomUUID(),
       art: "Eislaufschule Kinder",
-      altersgruppe: "4–10 Jahre",
+      altersgruppe: "4–11 Jahre",
+      minAlter: 4,
+      maxAlter: 11,
       datum: datumInTagen(40),
       uhrzeit: "12:00",
       trainer: "B",
@@ -69,7 +81,9 @@ function erstelleDemoTrainings() {
     {
       id: crypto.randomUUID(),
       art: "Eishockey Jugend",
-      altersgruppe: "10–17 Jahre",
+      altersgruppe: "12–17 Jahre",
+      minAlter: 12,
+      maxAlter: 17,
       datum: datumInTagen(40),
       uhrzeit: "13:00",
       trainer: "C",
@@ -78,7 +92,9 @@ function erstelleDemoTrainings() {
     {
       id: crypto.randomUUID(),
       art: "Eiskunstlauf Fortgeschrittene",
-      altersgruppe: "ab 12 Jahren",
+      altersgruppe: "12-17 Jahre",
+      minAlter: 12,
+      maxAlter: 17,
       datum: datumInTagen(43),
       uhrzeit: "18:30",
       trainer: "A",
@@ -88,6 +104,8 @@ function erstelleDemoTrainings() {
       id: crypto.randomUUID(),
       art: "Eishockey Herren",
       altersgruppe: "ab 18 Jahren",
+      minAlter: 18,
+      maxAlter: 99,
       datum: datumInTagen(43),
       uhrzeit: "20:00",
       trainer: "C",
@@ -97,6 +115,8 @@ function erstelleDemoTrainings() {
       id: crypto.randomUUID(),
       art: "Eislaufschule Erwachsene",
       altersgruppe: "ab 18 Jahren",
+      minAlter: 18,
+      maxAlter: 99,
       datum: datumInTagen(45),
       uhrzeit: "16:30",
       trainer: "B",
@@ -106,6 +126,8 @@ function erstelleDemoTrainings() {
       id: crypto.randomUUID(),
       art: "Eiskunstlauf Schnupperkurs",
       altersgruppe: "Alle Altersgruppen",
+      minAlter: 4,
+      maxAlter: 99,
       datum: datumInTagen(45),
       uhrzeit: "19:00",
       trainer: "A",
@@ -115,6 +137,8 @@ function erstelleDemoTrainings() {
       id: crypto.randomUUID(),
       art: "Eislaufschule Schnupperkurs",
       altersgruppe: "Alle Altersgruppen",
+      minAlter: 4,
+      maxAlter: 99,
       datum: datumInTagen(49),
       uhrzeit: "10:00",
       trainer: "B",
@@ -123,7 +147,9 @@ function erstelleDemoTrainings() {
     {
       id: crypto.randomUUID(),
       art: "Eislaufschule Nachwuchs",
-      altersgruppe: "4-10 Jahre",
+      altersgruppe: "4-11 Jahre",
+      minAlter: 4,
+      maxAlter: 11,
       datum: datumInTagen(49),
       uhrzeit: "12:00",
       trainer: "B",
@@ -133,6 +159,8 @@ function erstelleDemoTrainings() {
       id: crypto.randomUUID(),
       art: "Eishockey Damen",
       altersgruppe: "ab 18 Jahren",
+      minAlter: 18,
+      maxAlter: 99,
       datum: datumInTagen(50),
       uhrzeit: "11:00",
       trainer: "C",
@@ -142,6 +170,8 @@ function erstelleDemoTrainings() {
       id: crypto.randomUUID(),
       art: "Eishockey U17",
       altersgruppe: "15-17 Jahre",
+      minAlter: 15,
+      maxAlter: 17,
       datum: datumInTagen(50),
       uhrzeit: "15:00",
       trainer: "C",
@@ -168,7 +198,7 @@ function App() {
   const [bearbeitungsId, setBearbeitungsId] = useState(null)
 
   // Benutzerrolle
-  const [rolle, setRolle] = useState("trainer")
+  const [rolle, setRolle] = useState("nutzer")
 
   // Account-Menü in der Navigation
   const [accountMenuOpen, setAccountMenuOpen] = useState(false)
@@ -180,6 +210,34 @@ function App() {
   // Aktuell angezeigtes Datum
   const [kalenderDatum, setKalenderDatum] = useState(new Date())
 
+  // Filterfunktion
+  const [filterOpen, setFilterOpen] = useState(false)
+  const [sportFilter, setSportFilter] = useState("alle")
+  const [altersFilter, setAltersFilter] = useState("alle")
+
+  // Kurse buchen / stornieren
+  const [gebuchteKurse, setGebuchteKurse] = useState([])
+  const [ausgewaehlterKurs, setAusgewaehlterKurs] = useState(null)
+  const [buchungsDaten, setBuchungsDaten] = useState({
+    vorname: "",
+    nachname: "",
+    alter: "",
+    email: "",
+    telefon: "",
+  })
+
+  // Trainings anfragen / stornieren
+  const [ausgewaehltesTraining, setAusgewaehltesTraining] = useState(null)
+  const [anfrageDaten, setAnfrageDaten] = useState({
+    vorname: "",
+    nachname: "",
+    alter: "",
+    email: "",
+    telefon: "",
+  })
+
+  const [anfrageErfolgreich, setAnfrageErfolgreich] = useState(false)
+  
   // Neue Kurse und Trainings hinzufügen
   const trainingHinzufuegen = (e) => {
     e.preventDefault()
@@ -242,7 +300,6 @@ function App() {
   }
 
   // KALENDER Funktion
-  
   // Trainings für einen bestimmten Kalendertag ermitteln
   const trainingsFuerDatum = (datum) => {
   const jahr = datum.getFullYear()
@@ -343,11 +400,160 @@ function App() {
     )
   }
 
+
   // Menu schließen
   const wechsleSeite = (seite) => {
     setAktiveSeite(seite)
     setMenuOpen(false)
+
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    })
   }
+
+
+  // Filter
+  const passtZumAltersFilter = (training) => {
+    if (altersFilter === "alle") {
+      return true
+    }
+
+    if (altersFilter === "kinder") {
+      return training.minAlter <= 11 && training.maxAlter >= 4
+    }
+
+    if (altersFilter === "jugend") {
+      return training.minAlter <= 17 && training.maxAlter >= 12
+    }
+
+    if (altersFilter === "erwachsene") {
+      return training.maxAlter >= 18
+    }
+
+    return true
+  }
+
+
+  const gefilterteTrainings = trainings.filter((training) => {
+    const passtSport =
+      sportFilter === "alle" ||
+      training.art.toLowerCase().includes(sportFilter.toLowerCase())
+
+    const passtAlter = passtZumAltersFilter(training)
+
+    return passtSport && passtAlter
+  })
+
+  // Kurs: Buchen & Stornieren
+  const kursBuchen = (trainingId) => {
+    setGebuchteKurse([...gebuchteKurse, trainingId])
+  }
+
+  const kursStornieren = (trainingId) => {
+    setGebuchteKurse(
+      gebuchteKurse.filter((id) => id !== trainingId)
+    )
+  }
+
+  const istGebucht = (trainingId) => {
+    return gebuchteKurse.includes(trainingId)
+  }
+
+  const [buchungErfolgreich, setBuchungErfolgreich] = useState(false)
+
+  const buchungAbsenden = (e) => {
+    e.preventDefault()
+
+    if (!ausgewaehlterKurs) {
+      return
+    }
+
+    if (
+      !buchungsDaten.vorname ||
+      !buchungsDaten.nachname ||
+      !buchungsDaten.alter ||
+      !buchungsDaten.email
+    ) {
+      alert("Bitte fülle alle Pflichtfelder aus.")
+      return
+    }
+
+    const alter = Number(buchungsDaten.alter)
+
+    if (
+      ausgewaehlterKurs.minAlter !== undefined &&
+      ausgewaehlterKurs.maxAlter !== undefined &&
+      (alter < ausgewaehlterKurs.minAlter ||
+        alter > ausgewaehlterKurs.maxAlter)
+    ) {
+      alert(
+        `Dieser Kurs ist für die Altersgruppe ${ausgewaehlterKurs.altersgruppe} vorgesehen.`
+      )
+      return
+    }
+
+    kursBuchen(ausgewaehlterKurs.id)
+    setBuchungErfolgreich(true)
+      alert(
+        `Buchung erfolgreich!\n\nEine Buchungsbestätigung wird an ${buchungsDaten.email} per E-Mail versendet.`
+)
+  }
+
+  const buchungAbbrechen = () => {
+    setAusgewaehlterKurs(null)
+    setBuchungErfolgreich(false)
+
+    setBuchungsDaten({
+      vorname: "",
+      nachname: "",
+      alter: "",
+      email: "",
+      telefon: "",
+    })
+
+    setAktiveSeite("trainings")
+  }
+
+  // Vereinstraining: Anfragen & Stornieren
+  const anfrageAbsenden = (e) => {
+    e.preventDefault()
+
+    if (!ausgewaehltesTraining) {
+      return
+    }
+
+    if (
+      !anfrageDaten.vorname ||
+      !anfrageDaten.nachname ||
+      !anfrageDaten.alter ||
+      !anfrageDaten.email
+    ) {
+      alert("Bitte fülle alle Pflichtfelder aus.")
+      return
+    }
+
+    setAnfrageErfolgreich(true)
+      alert(
+        `Anfrage erfolgreich gesendet!\n\nDer Verein prüft deine Anfrage. Eine Rückmeldung wird an ${anfrageDaten.email} per E-Mail versendet.`
+    )
+  }
+
+  const anfrageAbbrechen = () => {
+    setAusgewaehltesTraining(null)
+    setAnfrageErfolgreich(false)
+
+    setAnfrageDaten({
+      vorname: "",
+      nachname: "",
+      alter: "",
+      email: "",
+      telefon: "",
+    })
+
+    setAktiveSeite("trainings")
+  }
+  
 
 
   return (
@@ -738,9 +944,73 @@ function App() {
             </>
           )}
 
+        {/* Filterfunktion */} 
+          <div className="filter-section">
+          
+            <button
+              type="button"
+              className="filter-toggle"
+              onClick={() => setFilterOpen(!filterOpen)}
+              aria-expanded={filterOpen}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                className="filter-icon"
+              >
+                <path
+                  d="M4 6h16l-6 7v5l-4 2v-7L4 6z"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+
+              <span>Filtern</span>
+            </button>
+
+            {filterOpen && (
+              <div className="training-filters">
+
+                <div className="filter-group">
+                  <label htmlFor="sportFilter">Sportart</label>
+
+                  <select
+                    id="sportFilter"
+                    value={sportFilter}
+                    onChange={(e) => setSportFilter(e.target.value)}
+                  >
+                    <option value="alle">Alle Sportarten</option>
+                    <option value="eiskunstlauf">Eiskunstlauf</option>
+                    <option value="eishockey">Eishockey</option>
+                    <option value="eislaufschule">Eislaufschule</option>
+                  </select>
+                </div>
+
+                <div className="filter-group">
+                  <label htmlFor="altersFilter">Altersgruppe</label>
+
+                  <select
+                    id="altersFilter"
+                    value={altersFilter}
+                    onChange={(e) => setAltersFilter(e.target.value)}
+                  >
+                    <option value="alle">Alle Altersgruppen</option>
+                    <option value="kinder">Kinder (ab 4 Jahren)</option>
+                    <option value="jugend">Jugend (ab 12 Jahren)</option>
+                    <option value="erwachsene">Erwachsene (ab 18 Jahren)</option>
+                  </select>
+                </div>
+
+              </div>
+            )}
+
+          </div>
 
           <div className="courses-grid">
-            {trainings.map((training) => (
+            {gefilterteTrainings.map((training) => (
               <div key={training.id} className="training course-card">
 
                 <span className="tag">
@@ -774,6 +1044,50 @@ function App() {
                       onClick={() => trainingLoeschen(training.id)}
                     >
                       Löschen
+                    </button>
+                  </div>
+                )}
+
+                {rolle === "nutzer" && training.typ === "kurs" && (
+                  <div className="training-actions">
+
+                    {!istGebucht(training.id) ? (
+                      <button
+                        className="btn btn-primary course-action-button"
+                        type="button"
+                        onClick={() => {
+                          setAusgewaehlterKurs(training)
+                          setBuchungErfolgreich(false)
+                          wechsleSeite("buchung")
+                        }}
+                      >
+                        Buchen
+                      </button>
+                    ) : (
+                      <button
+                        className="small-button"
+                        type="button"
+                        onClick={() => kursStornieren(training.id)}
+                      >
+                        Stornieren
+                      </button>
+                    )}
+
+                  </div>
+                )}
+
+                {rolle === "nutzer" && training.typ === "training" && (
+                  <div className="training-actions">
+                    <button
+                      className="btn btn-ghost on-light course-action-button"
+                      type="button"
+                      onClick={() => {
+                        setAusgewaehltesTraining(training)
+                        setAnfrageErfolgreich(false)
+                        wechsleSeite("anfrage")
+                      }}
+                    >
+                      Teilnahme anfragen
                     </button>
                   </div>
                 )}
@@ -945,15 +1259,25 @@ function App() {
                   {tagesTrainings.map((training) => (
                     <div
                       key={training.id}
-                      className={`calendar-event typ-${training.typ}`}
-                    >
-                      <strong>
-                        {training.uhrzeit}
-                      </strong>
+                      className={`calendar-event typ-${training.typ} ${
+                        rolle === "nutzer" ? "clickable" : ""
+                      }`}
+                      onClick={() => {
+                        if (rolle !== "nutzer") return
 
-                      <span>
-                        {training.art}
-                      </span>
+                        if (training.typ === "kurs") {
+                          setAusgewaehlterKurs(training)
+                          setBuchungErfolgreich(false)
+                          wechsleSeite("buchung")
+                        } else {
+                          setAusgewaehltesTraining(training)
+                          setAnfrageErfolgreich(false)
+                          wechsleSeite("anfrage")
+                        }
+                      }}
+                    >
+                      <strong>{training.uhrzeit}</strong>
+                      <span>{training.art}</span>
                     </div>
                   ))}
 
@@ -1013,7 +1337,22 @@ function App() {
                 {tagesTrainings.map((training) => (
                   <div
                     key={training.id}
-                    className={`week-training typ-${training.typ}`}
+                    className={`week-training typ-${training.typ} ${
+                      rolle === "nutzer" ? "clickable" : ""
+                    }`}
+                    onClick={() => {
+                      if (rolle !== "nutzer") return
+
+                      if (training.typ === "kurs") {
+                        setAusgewaehlterKurs(training)
+                        setBuchungErfolgreich(false)
+                        wechsleSeite("buchung")
+                      } else {
+                        setAusgewaehltesTraining(training)
+                        setAnfrageErfolgreich(false)
+                        wechsleSeite("anfrage")
+                      }
+                    }}
                   >
                     <strong>
                       {training.uhrzeit}
@@ -1038,18 +1377,359 @@ function App() {
       </section>
     )}
 
-
       {/* ============ BUCHUNG ============ */}
       {aktiveSeite === "buchung" && (
         <section className="block" id="booking">
+
           <div className="section-head">
             <span className="eyebrow">Buchung</span>
-            <h1>Kurs oder Training buchen</h1>
-            <p>
-              Die digitale Buchungs- und Stornierungsfunktion wird in
-              einem späteren Sprint umgesetzt.
-            </p>
+            <h1>Kurs buchen</h1>
+
+            {ausgewaehlterKurs && (
+              <p>
+                Fülle die folgenden Angaben aus, um deine Buchung abzuschließen.
+              </p>
+            )}
           </div>
+
+          {ausgewaehlterKurs ? (
+            <>
+              {/* Ausgewählter Kurs */}
+              <div className="booking-course-summary">
+                <span className="tag">
+                  {ausgewaehlterKurs.altersgruppe}
+                </span>
+
+                <h2>{ausgewaehlterKurs.art}</h2>
+
+                <p>
+                  Datum:{" "}
+                  {new Date(
+                    ausgewaehlterKurs.datum
+                  ).toLocaleDateString("de-DE")}
+                </p>
+
+                <p>
+                  Uhrzeit: {ausgewaehlterKurs.uhrzeit}
+                </p>
+
+                <p>
+                  Trainer:in: {ausgewaehlterKurs.trainer}
+                </p>
+              </div>
+
+              {/* Buchungsformular */}
+              <form
+                className="booking-form"
+                onSubmit={buchungAbsenden}
+              >
+                <div className="booking-form-grid">
+
+                  <div className="form-field">
+                    <label htmlFor="vorname">Vorname</label>
+                    <input
+                      id="vorname"
+                      type="text"
+                      placeholder="Vorname"
+                      value={buchungsDaten.vorname}
+                      required
+                      onChange={(e) =>
+                        setBuchungsDaten({
+                          ...buchungsDaten,
+                          vorname: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                  <div className="form-field">
+                    <label htmlFor="nachname">Nachname</label>
+                    <input
+                      id="nachname"
+                      type="text"
+                      placeholder="Nachname"
+                      value={buchungsDaten.nachname}
+                      required
+                      onChange={(e) =>
+                        setBuchungsDaten({
+                          ...buchungsDaten,
+                          nachname: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                  <div className="form-field">
+                    <label htmlFor="alter">Alter</label>
+                    <input
+                      id="alter"
+                      type="number"
+                      min="4"
+                      placeholder="Alter"
+                      value={buchungsDaten.alter}
+                      required
+                      onChange={(e) =>
+                        setBuchungsDaten({
+                          ...buchungsDaten,
+                          alter: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                  <div className="form-field">
+                    <label htmlFor="telefon">Telefonnummer</label>
+                    <input
+                      id="telefon"
+                      type="tel"
+                      placeholder="Optional"
+                      value={buchungsDaten.telefon}
+                      onChange={(e) =>
+                        setBuchungsDaten({
+                          ...buchungsDaten,
+                          telefon: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                  <div className="form-field full-width">
+                    <label htmlFor="email">E-Mail-Adresse</label>
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="name@beispiel.de"
+                      value={buchungsDaten.email}
+                      required
+                      onChange={(e) =>
+                        setBuchungsDaten({
+                          ...buchungsDaten,
+                          email: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                </div>
+
+                <div className="booking-form-actions">
+                  <button
+                    type="button"
+                    className="btn btn-ghost on-light"
+                    onClick={buchungAbbrechen}
+                  >
+                    Abbrechen
+                  </button>
+
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                  >
+                    Buchung abschließen
+                  </button>
+                </div>
+              </form>
+
+              {buchungErfolgreich && (
+                <div className="booking-success">
+                  <strong>Buchung erfolgreich!</strong>
+
+                  <p>
+                    Deine Buchung für {ausgewaehlterKurs.art} wurde gespeichert.
+                  </p>
+                </div>
+              )}
+            </>
+          ) : (
+            <>
+              {/* Noch kein Kurs ausgewählt */}
+              <div className="hero-ctas booking-navigation">
+                <button
+                  className="btn btn-primary"
+                  type="button"
+                  onClick={() => setAktiveSeite("trainings")}
+                >
+                  Kurse & Trainings ansehen
+                </button>
+
+                <button
+                  className="btn btn-ghost on-light"
+                  type="button"
+                  onClick={() => setAktiveSeite("kalender")}
+                >
+                  Kalenderübersicht anzeigen
+                </button>
+              </div>
+
+              <p className="booking-empty-message">
+                Bitte wähle zuerst einen Kurs unter „Kurse & Trainings“ aus.
+              </p>
+            </>
+          )}
+
+        </section>
+      )}
+
+      {/* ============ TRAINING ANFRAGEN ============ */}
+      {aktiveSeite === "anfrage" && (
+        <section className="block" id="request">
+
+          <div className="section-head">
+            <span className="eyebrow">Teilnahmeanfrage</span>
+            <h1>Training anfragen</h1>
+
+            {ausgewaehltesTraining && (
+              <p>
+                Fülle die folgenden Angaben aus, um eine Teilnahme am Training
+                anzufragen.
+              </p>
+            )}
+          </div>
+
+          {ausgewaehltesTraining && (
+            <>
+              <div className="booking-course-summary">
+                <span className="tag">
+                  {ausgewaehltesTraining.altersgruppe}
+                </span>
+
+                <h2>{ausgewaehltesTraining.art}</h2>
+
+                <p>
+                  Datum:{" "}
+                  {new Date(
+                    ausgewaehltesTraining.datum
+                  ).toLocaleDateString("de-DE")}
+                </p>
+
+                <p>Uhrzeit: {ausgewaehltesTraining.uhrzeit}</p>
+
+                <p>Trainer:in: {ausgewaehltesTraining.trainer}</p>
+              </div>
+
+              <form
+                className="booking-form"
+                onSubmit={anfrageAbsenden}
+              >
+                <div className="booking-form-grid">
+
+                  <div className="form-field">
+                    <label htmlFor="anfrage-vorname">Vorname</label>
+                    <input
+                      id="anfrage-vorname"
+                      type="text"
+                      placeholder="Vorname"
+                      value={anfrageDaten.vorname}
+                      required
+                      onChange={(e) =>
+                        setAnfrageDaten({
+                          ...anfrageDaten,
+                          vorname: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                  <div className="form-field">
+                    <label htmlFor="anfrage-nachname">Nachname</label>
+                    <input
+                      id="anfrage-nachname"
+                      type="text"
+                      placeholder="Nachname"
+                      value={anfrageDaten.nachname}
+                      required
+                      onChange={(e) =>
+                        setAnfrageDaten({
+                          ...anfrageDaten,
+                          nachname: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                  <div className="form-field">
+                    <label htmlFor="anfrage-alter">Alter</label>
+                    <input
+                      id="anfrage-alter"
+                      type="number"
+                      placeholder="Alter"
+                      min="4"
+                      value={anfrageDaten.alter}
+                      required
+                      onChange={(e) =>
+                        setAnfrageDaten({
+                          ...anfrageDaten,
+                          alter: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                  <div className="form-field">
+                    <label htmlFor="anfrage-telefon">Telefonnummer</label>
+                    <input
+                      id="anfrage-telefon"
+                      type="tel"
+                      placeholder="Optional"
+                      value={anfrageDaten.telefon}
+                      onChange={(e) =>
+                        setAnfrageDaten({
+                          ...anfrageDaten,
+                          telefon: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                  <div className="form-field full-width">
+                    <label htmlFor="anfrage-email">E-Mail-Adresse</label>
+                    <input
+                      id="anfrage-email"
+                      type="email"
+                      placeholder="name@beispiel.de"
+                      value={anfrageDaten.email}
+                      required
+                      onChange={(e) =>
+                        setAnfrageDaten({
+                          ...anfrageDaten,
+                          email: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                </div>
+
+                <div className="booking-form-actions">
+                  <button
+                    type="button"
+                    className="btn btn-ghost on-light form-action-button"
+                    onClick={anfrageAbbrechen}
+                  >
+                    Abbrechen
+                  </button>
+
+                  <button
+                    type="submit"
+                    className="btn btn-primary form-action-button"
+                  >
+                    Anfrage senden
+                  </button>
+                </div>
+              </form>
+
+              {anfrageErfolgreich && (
+                <div className="booking-success">
+                  <strong>Anfrage erfolgreich gesendet!</strong>
+                  <p>
+                    Deine Anfrage zur Teilnahme an{" "}
+                    {ausgewaehltesTraining.art} wurde erfasst.
+                  </p>
+                </div>
+              )}
+            </>
+          )}
+
         </section>
       )}
 
