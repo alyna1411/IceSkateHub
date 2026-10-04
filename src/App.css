@@ -322,7 +322,7 @@ a {
 /* ============ HERO ============ */
 
 .hero {
-  padding: 90px 32px 100px;
+  padding: 30px 32px 100px;
   text-align: center;
 }
 
@@ -1032,7 +1032,7 @@ section.block {
     background 0.2s ease;
 }
 
-.form-field input::placeholder {
+.form-field input::heading {
   color: var(--slate-light);
 }
 
@@ -1109,6 +1109,228 @@ section.block {
 .calendar-event.clickable:hover,
 .week-training.clickable:hover {
   box-shadow: 0 8px 18px rgba(11, 42, 69, 0.14);
+}
+
+/* ============ ÜBER UNS ============ */
+
+.about-page {
+  background: var(--snow);
+}
+
+
+/* GALERIE */
+
+.about-gallery {
+  padding: 48px 0 50px;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.about-carousel {
+  padding-left: 7%;
+}
+
+.about-carousel .swiper {
+  padding-right: 7%;
+  padding-bottom: 34px;
+}
+
+.gallery-card {
+  position: relative;
+  height: 260px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--ink-soft);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 18px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  background: linear-gradient(to top, rgba(6, 25, 42, 0.8), transparent 60%);
+}
+
+.gallery-overlay span {
+  color: white;
+  font-weight: 700;
+}
+
+.gallery-icon {
+  color: white;
+}
+
+.about-gallery-heading {
+  width: 86%;
+  margin: 8px auto 0;
+}
+
+.about-gallery-heading span {
+  color: var(--glacier);
+  font-size: clamp(14px, 3vw, 20px);
+}
+
+/* Swiper */
+.about-carousel .swiper-button-prev,
+.about-carousel .swiper-button-next {
+  color: white;
+}
+
+.about-carousel .swiper-pagination-bullet {
+  background: white;
+}
+
+.about-carousel .swiper-pagination-bullet-active {
+  background: var(--ember);
+}
+
+.about-intro {
+  padding: 30px 8%;
+}
+
+.about-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-content h2 {
+  margin: 10px 0 24px;
+  color: var(--ink);
+  font-size: clamp(32px, 4vw, 48px);
+}
+
+.about-intro-text {
+  margin: 0 auto;
+  max-width: 780px;
+  color: var(--slate);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.about-sport-tags {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.about-sport-tags span {
+  padding: 9px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: white;
+  color: var(--slate);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ============ SPORTARTEN ============ */
+
+.sport-overview {
+  margin: 42px 0 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.sport-info-card {
+  position: relative;
+  height: 360px;
+  padding: 0;
+  overflow: hidden;
+
+  border: 0;
+  border-radius: 18px;
+
+  background-size: cover;
+  background-position: center;
+
+  text-align: left;
+  cursor: pointer;
+
+  box-shadow: 0 12px 30px rgba(11, 42, 69, 0.12);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.sport-info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 38px rgba(11, 42, 69, 0.18);
+}
+
+.sport-info-content {
+  position: absolute;
+  inset: auto 0 0;
+
+  padding: 26px;
+
+  background: linear-gradient(
+    to top,
+    rgba(6, 25, 42, 0.97) 0%,
+    rgba(6, 25, 42, 0.88) 60%,
+    transparent 100%
+  );
+
+  transform: translateY(125px);
+
+  transition: transform 0.4s ease;
+}
+
+.sport-info-card:hover .sport-info-content,
+.sport-info-card.open .sport-info-content {
+  transform: translateY(0);
+}
+
+.sport-info-label {
+  color: rgb(178, 229, 238);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sport-info-card h3 {
+  margin: 6px 0 14px;
+  color: white;
+  font-size: 26px;
+}
+
+.sport-info-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+}
+
+.sport-info-details p {
+  margin-bottom: 8px;
+  color: white;
+  line-height: 1.55;
+}
+
+.sport-info-details span::before {
+  content: "•";
+  margin-right: 7px;
+  color: var(--ice);
 }
 
 /* ============ FOOTER ============ */
@@ -1424,6 +1646,43 @@ footer {
     min-height: 38px;
     padding: 8px 16px;
     font-size: 13px;
+  }
+
+  .about-intro {
+    padding: 64px 24px;
+  }
+
+  .about-gallery {
+    padding: 36px 0 40px;
+  }
+
+  .about-carousel {
+    padding-left: 24px;
+  }
+
+  .about-carousel .swiper {
+    padding-right: 24px;
+  }
+
+  .gallery-card {
+    height: 240px;
+  }
+
+  .about-gallery-heading {
+    width: auto;
+    margin: 8px 24px 0;
+  }
+
+  .about-content {
+    text-align: left;
+  }
+
+  .sport-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .sport-info-card {
+    height: 330px;
   }
 
   footer {

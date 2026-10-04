@@ -1,7 +1,12 @@
 import { useState } from "react"
 import "./App.css"
 
-// Erzeugt dynamische Demo-Trainings für Testzwecke
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Autoplay, Navigation, Pagination } from "swiper/modules"
+
+import "swiper/css/bundle"
+
+// dynamische Demo-Trainings für Testzwecke
 function erstelleDemoTrainings() {
   const heute = new Date()
 
@@ -180,11 +185,53 @@ function erstelleDemoTrainings() {
   ]
 }
 
+
+// Galerie mit fiktiven Bildern (AI-generiert) für Testzwecke
+const galerieBilder = [
+  {
+    src: "/images/gallery/eishockey-herren.png",
+    alt: "Eishockey Herrenmannschaft",
+    titel: "Eishockey Herrenmannschaft",
+  },
+  {
+    src: "/images/gallery/eiskunstlauf-beginner.png",
+    alt: "Eiskunstlauf Anfänger:innen",
+    titel: "Eiskunstlauf Anfänger:innen",
+  },
+  {
+    src: "/images/gallery/eislaufschule-nachwuchs.png",
+    alt: "Eislaufschule Nachwuchs",
+    titel: "Eislaufschule Nachwuchs",
+  },
+  {
+    src: "/images/gallery/eislaufschule-erwachsene.png",
+    alt: "Eislaufschule Erwachsene",
+    titel: "Eislaufschule Erwachsene",
+  },
+  {
+    src: "/images/gallery/eishockey-u9.png",
+    alt: "Eishockey U9-Mannschaft",
+    titel: "Eishockey U9-Mannschaft",
+  },
+  {
+    src: "/images/gallery/eiskunstlauf-kinder.png",
+    alt: "Eiskunstlauf Kinder",
+    titel: "Eiskunstlauf Kinder",
+  },
+   {
+    src: "/images/gallery/eiskunstlauf-fortgeschrittene.png",
+    alt: "Eiskunstlauf Fortgeschrittene",
+    titel: "Eiskunstlauf Fortgeschrittene",
+  },
+]
+
+
 function App() {
   const [trainings, setTrainings] = useState(() => erstelleDemoTrainings())
 
   // Aktuell ausgewählte Rubrik
   const [aktiveSeite, setAktiveSeite] = useState("home")
+  const [offeneSportCard, setOffeneSportCard] = useState(null)
 
   const [neuesTraining, setNeuesTraining] = useState({
     art: "",
@@ -1734,20 +1781,217 @@ function App() {
       )}
 
 
-      {/* ============ ÜBER UNS ============ */}
       {aktiveSeite === "ueber-uns" && (
-        <section className="block" id="about">
-          <div className="section-head">
-            <span className="eyebrow">Über uns</span>
-            <h1>Eissportverein H. e. V.</h1>
-            <p>
-              Informationen zur Eishalle, zu Öffnungszeiten, öffentlichen Laufzeiten,
-              Veranstaltungen und weiteren Vereinsangeboten - diese Funktion wird in
-              einem späteren Sprint umgesetzt.
-            </p>
+      <div className="about-page">
+
+        {/* ============ GALLERIE ============ */}
+        <section className="about-gallery">
+            <div className="about-carousel">
+              <Swiper
+                modules={[Autoplay, Navigation, Pagination]}
+                loop={true}
+                grabCursor={true}
+                speed={850}
+                spaceBetween={20}
+                navigation={true}
+                pagination={{ clickable: true }}
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
+                breakpoints={{
+                  0: {
+                    slidesPerView: 1.15,
+                    spaceBetween: 14,
+                  },
+                  600: {
+                    slidesPerView: 2.1,
+                    spaceBetween: 16,
+                  },
+                  900: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                  },
+                  1200: {
+                    slidesPerView: 4,
+                    spaceBetween: 22,
+                  },
+                }}
+              >
+                {galerieBilder.map((bild, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="gallery-card">
+
+                      <img
+                        src={bild.src}
+                        alt={bild.alt}
+                      />
+
+                      <div className="gallery-overlay">
+                        <span>{bild.titel}</span>
+
+                        <div className="gallery-icon">
+                          ↗
+                        </div>
+                      </div>
+
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
+          <div className="about-gallery-heading">
+            <span>Galerie</span>
           </div>
         </section>
-      )}
+
+
+        {/* ============ INFORMATION ============ */}
+        <section className="about-intro">
+          <div className="about-content">
+
+            <span className="eyebrow">Über uns</span>
+
+            <h2>Eissport im H. e. V.</h2>
+
+            <p className="about-intro-text">
+              Von ersten Schritten auf dem Eis bis hin zu regelmäßigem
+              Vereins- und Mannschaftstraining stehen unterschiedliche
+              Angebote in den Bereichen Eiskunstlauf, Eishockey und
+              Eislaufschule zur Verfügung.
+              Du bist interessiert am Eissport? Dann komm einfach zum
+              Training vorbei! Ein Besuch lohnt sich!
+            </p>
+
+            {/* Sportarten */}
+            <div className="sport-overview">
+              <button
+                type="button"
+                className={`sport-info-card ${
+                  offeneSportCard === "eislaufschule" ? "open" : ""
+                }`}
+                style={{
+                  backgroundImage:
+                    "url('/images/gallery/eislaufschule-thumbnail.png')",
+                }}
+                onClick={() =>
+                  setOffeneSportCard(
+                    offeneSportCard === "eislaufschule"
+                      ? null
+                      : "eislaufschule"
+                  )
+                }
+              >
+                <div className="sport-info-content">
+                  <span className="sport-info-label">Erste Schritte</span>
+                  <h3>Eislaufschule</h3>
+
+                  <div className="sport-info-details">
+                    <p>
+                      Von deinen allerersten Schritten auf dem Eis über grundlegende Lauftechniken bis hin zu 
+                      fortgeschrittenen Bewegungsabläufen – hier entwickelst du
+                      Sicherheit, Technik und Freude am Eislaufen.
+                    </p>
+
+                    <span>Für verschiedene Altersgruppen</span>
+                    <span>Probetrainings & Schnupperkurse</span>
+                    <span>Schlittschuhverleih vor Ort</span>
+                  </div>
+                </div>
+              </button>
+
+
+              <button
+                type="button"
+                className={`sport-info-card ${
+                  offeneSportCard === "eiskunstlauf" ? "open" : ""
+                }`}
+                style={{
+                  backgroundImage:
+                    "url('/images/gallery/eiskunstlauf-thumbnail.png')",
+                }}
+                onClick={() =>
+                  setOffeneSportCard(
+                    offeneSportCard === "eiskunstlauf"
+                      ? null
+                      : "eiskunstlauf"
+                  )
+                }
+              >
+                <div className="sport-info-content">
+                  <span className="sport-info-label">Mit Eleganz aufs Eis</span>
+                  <h3>Eiskunstlauf</h3>
+
+                  <div className="sport-info-details">
+                    <p>
+                      Über sauberes Kantenlaufen und eleganten Figuren bis hin zu 
+                      Pirouetten, Sprüngen und ganzen Programmelementen – hier verbindest du Technik, 
+                      Bewegung und Ausdruck auf dem Eis.
+                    </p>
+
+                    <span>Für verschiedene Altersgruppen</span>
+                    <span>Anfänger:innen bis Fortgeschrittene</span>
+                    <span>Einzel- oder Gruppentraining</span>
+                  </div>
+                </div>
+              </button>
+
+
+              <button
+                type="button"
+                className={`sport-info-card ${
+                  offeneSportCard === "eishockey" ? "open" : ""
+                }`}
+                style={{
+                  backgroundImage:
+                    "url('/images/gallery/eishockey-thumbnail.png')",
+                }}
+                onClick={() =>
+                  setOffeneSportCard(
+                    offeneSportCard === "eishockey"
+                      ? null
+                      : "eishockey"
+                  )
+                }
+              >
+                <div className="sport-info-content">
+                  <span className="sport-info-label">Noch mehr Action</span>
+                  <h3>Eishockey</h3>
+
+                  <div className="sport-info-details">
+                    <p>
+                      Von sicherem Gleiten über Puckführung und Passspiel bis hin zu 
+                      Schuss- und Spielsituationen entwickelst 
+                      du deine Fähigkeiten auf dem Eis.
+                    </p>
+
+                    <span>Für verschiedene Altersgruppen</span>
+                    <span>Regelmäßiges Vereinstraining</span>
+                    <span>Leihausrüstung für Schnupperkurse verfügbar</span>
+                  </div>
+                </div>
+              </button>
+
+            </div>
+            
+
+
+
+            <button
+              className="btn btn-primary"
+              type="button"
+              onClick={() => wechsleSeite("trainings")}
+            >
+              Kurse & Trainings ansehen
+            </button>
+
+          </div>
+        </section>
+
+      </div>
+    )}
 
 
       {/* ============ KONTAKT ============ */}
