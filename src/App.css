@@ -322,7 +322,7 @@ a {
 /* ============ HERO ============ */
 
 .hero {
-  padding: 30px 32px 100px;
+  padding: 30px 32px 50px;
   text-align: center;
 }
 
@@ -358,7 +358,7 @@ a {
 }
 
 .hero-ctas {
-  margin-top: 36px;
+  margin-top: 16px;
   display: flex;
   justify-content: center;
   gap: 14px;
@@ -397,6 +397,345 @@ a {
 .fact span {
   color: #a9c4d6;
   font-size: 13.5px;
+}
+
+/* ============ PREISE ============ */
+
+.pricing-section {
+  padding: 60px max(32px, calc((100vw - var(--maxw)) / 2));
+  background: white;
+}
+
+.pricing-header,
+.pricing-subsection-heading {
+  max-width: 720px;
+  margin-bottom: 42px;
+}
+
+.pricing-header h2,
+.pricing-subsection-heading h2 {
+  margin: 6px 0 14px;
+
+  color: var(--ink);
+  font-size: clamp(34px, 4vw, 48px);
+  line-height: 1.1;
+}
+
+.pricing-header p,
+.pricing-subsection-heading p {
+  color: var(--slate-light);
+  font-size: 15px;
+}
+
+
+/* SPORTARTEN */
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.price-card {
+  overflow: hidden;
+
+  background: var(--frost);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+
+  box-shadow: 0 10px 28px rgba(11, 42, 69, 0.06);
+}
+
+.price-card-header {
+  padding: 24px 24px 18px;
+}
+
+.price-card-header > span {
+  color: var(--ice-dark);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.price-card-header h3 {
+  margin-top: 4px;
+
+  color: var(--ink);
+  font-size: 25px;
+}
+
+/* ÖFFENTLICHE LAUFZEITEN */
+
+.public-skating-prices {
+  margin-bottom: 70px;
+}
+
+.public-skating-card {
+  max-width: 760px;
+
+  overflow: hidden;
+
+  background: var(--frost);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+
+  box-shadow: 0 10px 28px rgba(11, 42, 69, 0.06);
+}
+
+.public-skating-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(240px, 0.55fr);
+  gap: 36px;
+  align-items: stretch;
+}
+
+.public-skating-card {
+  max-width: none;
+}
+
+/* Info-Note rechts */
+
+.skating-times-note {
+  position: relative;
+  overflow: hidden;
+
+  padding: 28px 26px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(220, 239, 247, 0.75),
+      rgba(245, 250, 252, 0.95)
+    );
+
+  border-left: 4px solid var(--ice);
+  border-radius: 0 18px 18px 0;
+
+  box-shadow: 0 12px 30px rgba(11, 42, 69, 0.07);
+}
+
+.skating-times-note::after {
+  content: "";
+
+  position: absolute;
+  top: -60px;
+  right: -50px;
+
+  width: 150px;
+  height: 150px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.55);
+  filter: blur(8px);
+}
+
+.skating-times-label {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+  margin-bottom: 22px;
+
+  color: var(--ice-dark);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skating-time {
+  position: relative;
+  z-index: 1;
+
+  padding: 14px 0;
+
+  border-top: 1px solid rgba(11, 42, 69, 0.1);
+}
+
+.skating-time:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.skating-time strong {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.skating-time span {
+  display: block;
+
+  color: var(--slate);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* PREISTABELLE KURSE */
+
+.price-table {
+  border-top: 1px solid var(--line);
+}
+
+.price-table-head,
+.price-row {
+  display: grid;
+  grid-template-columns: 1.5fr 0.75fr 0.75fr;
+  align-items: center;
+
+  gap: 10px;
+  padding: 13px 20px;
+}
+
+.price-table-head {
+  background: var(--ink);
+  color: white;
+
+  font-size: 11px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.price-row {
+  border-bottom: 1px solid var(--line);
+}
+
+.price-row strong {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.price-row span {
+  color: var(--slate);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.price-note {
+  display: block;
+
+  padding: 12px 20px 16px;
+
+  color: var(--slate-light);
+  font-size: 11px;
+}
+
+
+/* DEALS */
+
+.pricing-subsection {
+  margin-top: 90px;
+}
+
+.deal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.deal-card {
+  padding: 25px;
+
+  background: var(--ink);
+  border-radius: 18px;
+
+  color: white;
+}
+
+.deal-card h3 {
+  margin-bottom: 24px;
+
+  color: white;
+  font-size: 25px;
+}
+
+.deal-group + .deal-group {
+  margin-top: 24px;
+  padding-top: 22px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.deal-group > span {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #a9c4d6;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.deal-group p {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  margin-top: 7px;
+
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 13px;
+}
+
+.deal-group strong {
+  color: white;
+  white-space: nowrap;
+}
+
+
+/* MITGLIEDSCHAFT + VERLEIH */
+
+.pricing-bottom-grid {
+  margin-top: 70px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.pricing-info-card {
+  padding: 30px;
+
+  background: var(--frost);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+.pricing-info-card h3 {
+  margin: 2px 0 24px;
+
+  color: var(--ink);
+  font-size: 27px;
+}
+
+.simple-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 13px 0;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.simple-price-row span {
+  color: var(--slate);
+  font-size: 14px;
+}
+
+.simple-price-row strong {
+  color: var(--ink);
+  font-size: 14px;
+  white-space: nowrap;
 }
 
 
@@ -1032,7 +1371,7 @@ section.block {
     background 0.2s ease;
 }
 
-.form-field input::heading {
+.form-field input::placeholder {
   color: var(--slate-light);
 }
 
@@ -1114,11 +1453,342 @@ section.block {
 /* ============ ÜBER UNS ============ */
 
 .about-page {
-  background: var(--snow);
+  background: var(--frost);
+}
+
+.about-feature {
+  padding: 30px 8%;
+}
+
+.about-feature-trainer {
+  background: var(--frost);
+}
+
+.about-feature-reverse {
+  background: white;
+}
+
+.about-feature-inner {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.about-info-group {
+  margin-top: 28px;
+}
+
+.about-info-title {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--ice);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.about-info-group p {
+  margin: 3px 0;
+
+  color: var(--slate);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* FOTO */
+
+.about-feature-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+
+  overflow: hidden;
+  border-radius: 22px;
+
+  box-shadow: 0 18px 45px rgba(11, 42, 69, 0.12);
+}
+
+.about-feature-photo img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  object-fit: cover;
+  object-position: center;
+
+  transition: transform 0.5s ease;
+}
+
+.about-feature-photo:hover img {
+  transform: scale(1.035);
+}
+
+/* ============ TRAINERTEAM ============ */
+
+.trainer-name {
+  color: var(--ice);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.trainer-layout {
+  margin-top: 30px;
+  grid-template-columns: 1.15fr 0.85fr;
+
+  grid-template-areas:
+    "photo heading"
+    "description description"
+    "extra extra";
+
+  gap: 28px 64px;
+}
+
+.trainer-photo {
+  grid-area: photo;
+  aspect-ratio: 3 / 2;
+}
+
+.trainer-heading {
+  grid-area: heading;
+}
+
+.trainer-description {
+  grid-area: description;
+
+  max-width: 1050px;
+  margin: 4px auto 0;
+
+  color: var(--slate);
+  font-size: 14px;
+  line-height: 1.65;
+
+  text-align: left;
+}
+
+.trainer-extra {
+  grid-area: extra;
 }
 
 
-/* GALERIE */
+/* Foto */
+
+.trainer-photo {
+  grid-area: photo;
+
+  width: 100%;
+
+
+  aspect-ratio: 4 / 3;
+}
+
+.trainer-photo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+.trainer-extra {
+  grid-area: extra;
+  width: 100%;
+  text-align: center;
+}
+
+
+/* Bulletpoints */
+
+.trainer-cred {
+  margin: 0;
+
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 10px 28px;
+}
+
+.trainer-cred li {
+  align-items: center;
+}
+
+
+/* TEXT */
+
+.about-feature-content h2 {
+  margin: 10px 0 22px;
+
+  color: var(--ink);
+
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.08;
+}
+
+
+/* FAKTEN */
+
+.about-cred {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.about-cred li {
+  display: flex;
+  gap: 11px;
+
+  color: var(--slate);
+
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.about-cred li::before {
+  content: "—";
+
+  color: var(--ice);
+  font-weight: 800;
+}
+
+
+/* EISHALLE */
+
+.about-feature-reverse .about-feature-inner {
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: start;
+}
+
+.about-feature-side {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about-info-under-photo {
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+.about-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.about-contact-grid p {
+  margin: 3px 0;
+  color: var(--slate);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ============ TESTIMONIALS ============ */
+
+.testimonials-section {
+  padding: 60px max(32px, calc((100vw - var(--maxw)) / 2));
+  background: white;
+}
+
+.testimonials-heading {
+  max-width: 720px;
+  margin: 0 auto 46px;
+
+  text-align: center;
+}
+
+.testimonials-heading h2 {
+  margin: 6px 0 16px;
+
+  color: var(--ink);
+  font-size: clamp(34px, 4vw, 48px);
+  line-height: 1.1;
+}
+
+.testimonials-heading p {
+  color: var(--slate-light);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+}
+
+
+.testimonial {
+  position: relative;
+
+  padding-top: 28px;
+
+  border-top: 2px solid var(--ice);
+}
+
+.testimonial-quote {
+  display: block;
+
+  height: 36px;
+
+  color: var(--ice);
+  font-family: "Fraunces", serif;
+  font-size: 52px;
+  line-height: 1;
+}
+
+.testimonial > p {
+  margin-top: 8px;
+
+  color: var(--slate);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+
+.testimonial-person {
+  margin-top: 24px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-person strong {
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.testimonial-person span {
+  margin-top: 2px;
+
+  color: var(--ice-dark);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+
+.testimonial-note {
+  display: block;
+
+  margin-top: 32px;
+
+  color: var(--slate-light);
+  font-size: 11px;
+}
+
+/* ========== GALERIE =========== */
 
 .about-gallery {
   padding: 48px 0 50px;
@@ -1208,7 +1878,7 @@ section.block {
   text-align: center;
 }
 
-.about-content h2 {
+.about-content > h2 {
   margin: 10px 0 24px;
   color: var(--ink);
   font-size: clamp(32px, 4vw, 48px);
@@ -1216,28 +1886,11 @@ section.block {
 
 .about-intro-text {
   margin: 0 auto;
+  margin-bottom: 24px;
   max-width: 780px;
   color: var(--slate);
   font-size: 17px;
   line-height: 1.8;
-}
-
-.about-sport-tags {
-  margin: 30px 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.about-sport-tags span {
-  padding: 9px 16px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: white;
-  color: var(--slate);
-  font-size: 13px;
-  font-weight: 700;
 }
 
 /* ============ SPORTARTEN ============ */
@@ -1331,6 +1984,189 @@ section.block {
   content: "•";
   margin-right: 7px;
   color: var(--ice);
+}
+
+/* ============ KONTAKT ============ */
+
+.contact-section {
+  padding: 90px max(32px, calc((100vw - var(--maxw)) / 2));
+
+  background: var(--ink);
+}
+
+.contact-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+
+  gap: 90px;
+  align-items: center;
+}
+
+
+/* LINKE SEITE */
+
+.contact-info {
+  color: white;
+}
+
+.contact-info .eyebrow {
+  color: #7fc4df;
+}
+
+.contact-info h1 {
+  max-width: 440px;
+  margin-bottom: 24px;
+
+  color: white;
+  font-size: clamp(38px, 4vw, 52px);
+  line-height: 1.08;
+}
+
+.contact-intro {
+  max-width: 520px;
+
+  color: #b6cbd9;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.contact-intro a {
+  color: white;
+  font-weight: 700;
+}
+
+.contact-intro a:hover {
+  color: #7fc4df;
+}
+
+
+/* KONTAKTDATEN */
+
+.contact-details {
+  margin-top: 38px;
+
+  display: grid;
+  gap: 24px;
+}
+
+.contact-detail span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #7fc4df;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.contact-detail p,
+.contact-detail a {
+  color: white;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.contact-detail a:hover {
+  color: #7fc4df;
+}
+
+
+/* FORMULAR */
+
+.contact-form {
+  padding: 36px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
+}
+
+.contact-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.contact-field.full-width {
+  grid-column: 1 / -1;
+}
+
+.contact-field label {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.contact-field label span {
+  color: var(--slate-light);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.contact-field input,
+.contact-field select,
+.contact-field textarea {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  border: 1px solid var(--line);
+  border-radius: 10px;
+
+  background: var(--frost);
+
+  color: var(--ink);
+
+  font: 500 14px "Manrope", sans-serif;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.contact-field textarea {
+  min-height: 150px;
+
+  resize: vertical;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+  color: var(--slate-light);
+}
+
+.contact-field input:focus,
+.contact-field select:focus,
+.contact-field textarea:focus {
+  outline: none;
+
+  background: white;
+  border-color: var(--ice);
+
+  box-shadow: 0 0 0 3px rgba(79, 168, 201, 0.12);
+}
+
+
+/* SENDEN */
+
+.contact-submit {
+  margin-top: 26px;
 }
 
 /* ============ FOOTER ============ */
@@ -1431,6 +2267,217 @@ footer {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+@media (max-width: 800px) {
+  .about-feature {
+    padding: 56px 24px;
+  }
+
+  .about-feature-inner,
+  .about-feature-reverse .about-feature-inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+   .about-feature-reverse .about-feature-inner {
+    gap: 0;
+  }
+
+   .about-feature-reverse .about-feature-content,
+  .about-feature-reverse .about-feature-side {
+    display: contents;
+  }
+
+  /* 1. Eyebrow */
+  .about-feature-reverse .about-feature-content > .eyebrow {
+    order: 1;
+    margin-bottom: 10px;
+  }
+
+  /* 2. Überschrift */
+  .about-feature-reverse .about-feature-content > h2 {
+    order: 2;
+    margin: 0 0 28px;
+  }
+
+  /* 3. Foto */
+  .about-feature-reverse .about-feature-side > .about-feature-photo {
+    order: 3;
+
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+
+    margin-bottom: 32px;
+  }
+
+  .about-feature-reverse .about-feature-photo img {
+    min-height: 0;
+  }
+
+  /* 4. Öffnungszeiten + Saisonzeiten */
+  .about-feature-reverse .about-feature-content > .about-info-group {
+    order: 4;
+
+    margin-top: 0;
+    margin-bottom: 28px;
+  }
+
+  /* 5. Anfahrt & Kontakt */
+  .about-feature-reverse .about-info-under-photo {
+    order: 5;
+
+    width: 100%;
+    padding-top: 22px;
+
+    border-top: 1px solid var(--line);
+  }
+
+  .about-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .about-contact-grid p {
+    font-size: 14px;
+  }
+
+  /* Trainerteam*/
+   .trainer-layout {
+    grid-template-columns: 1fr;
+
+    grid-template-areas:
+      "heading"
+      "photo"
+      "description"
+      "extra";
+
+    gap: 0;
+  }
+
+  .trainer-heading {
+    margin-bottom: 28px;
+  }
+
+  .trainer-photo {
+    margin-bottom: 24px;
+    min-height: 0;
+    aspect-ratio: 3 / 2;
+  }
+
+  .trainer-description {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  /* 4. Bulletpoints */
+
+  .trainer-extra {
+    margin-top: 26px;
+  }
+
+  .trainer-cred {
+    flex-direction: column;
+    align-items: center;
+
+    gap: 10px;
+  }
+
+  .trainer-cred li {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+
+  /* Preise */
+
+   .pricing-section {
+    padding: 64px 24px;
+  }
+
+  .pricing-grid,
+  .deal-grid,
+  .pricing-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-subsection {
+    margin-top: 64px;
+  }
+
+  .pricing-bottom-grid {
+    margin-top: 50px;
+  }
+
+  .price-table-head,
+  .price-row {
+    grid-template-columns: 1.4fr 0.8fr 0.8fr;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .price-row strong,
+  .price-row span {
+    font-size: 12px;
+  }
+
+  .public-skating-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .skating-times-note {
+    border-left: 0;
+    border-top: 4px solid var(--ice);
+
+    border-radius: 0 0 18px 18px;
+  }
+
+  .testimonials-section {
+    padding: 60px 24px;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .testimonials-heading {
+    margin-bottom: 38px;
+  }
+
+  /* Kontakt */
+
+  .contact-section {
+    padding: 64px 24px;
+  }
+
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .contact-info h1 {
+    font-size: 38px;
+  }
+
+  .contact-form {
+    padding: 26px 22px;
+  }
+
+  .contact-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-field.full-width {
+    grid-column: auto;
+  }
+
+  .contact-submit {
+    width: 100%;
+  }
+}
+
 
 @media (max-width: 760px) {
   .nav {
@@ -1675,6 +2722,13 @@ footer {
 
   .about-content {
     text-align: left;
+  }
+
+  .about-content .btn {
+    display: flex;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .sport-overview {

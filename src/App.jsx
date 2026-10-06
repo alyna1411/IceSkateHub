@@ -185,7 +185,6 @@ function erstelleDemoTrainings() {
   ]
 }
 
-
 // Galerie mit fiktiven Bildern (AI-generiert) für Testzwecke
 const galerieBilder = [
   {
@@ -222,6 +221,94 @@ const galerieBilder = [
     src: "/images/gallery/eiskunstlauf-fortgeschrittene.png",
     alt: "Eiskunstlauf Fortgeschrittene",
     titel: "Eiskunstlauf Fortgeschrittene",
+  },
+]
+
+// Preise €€€
+const preisBereiche = [
+  {
+    titel: "Eislaufschule",
+    preise: [
+      {
+        name: "Erwachsene",
+        werktag: "30 €",
+        wochenende: "35 €",
+      },
+      {
+        name: "Kinder & Jugendliche",
+        werktag: "20 €",
+        wochenende: "25 €",
+      },
+      {
+        name: "Einzeltraining",
+        werktag: "50 €",
+        wochenende: "55 €",
+      },
+    ],
+  },
+  {
+    titel: "Eiskunstlauf",
+    preise: [
+      {
+        name: "Erwachsene",
+        werktag: "60 €",
+        wochenende: "65 €",
+      },
+      {
+        name: "Kinder & Jugendliche",
+        werktag: "50 €",
+        wochenende: "55 €",
+      },
+      {
+        name: "Einzeltraining",
+        werktag: "80 €",
+        wochenende: "85 €",
+      },
+    ],
+  },
+  {
+    titel: "Eishockey",
+    preise: [
+      {
+        name: "Erwachsene",
+        werktag: "45 €",
+        wochenende: "50 €",
+      },
+      {
+        name: "Kinder & Jugendliche",
+        werktag: "35 €",
+        wochenende: "40 €",
+      },
+      {
+        name: "Einzeltraining",
+        werktag: "60 €",
+        wochenende: "65 €",
+      },
+    ],
+  },
+]
+
+const mehrfachkarten = [
+  {
+    titel: "Eislaufschule",
+    erwachsene3: "85 €",
+    jugend3: "55 €",
+    erwachsene5: "140 €",
+    jugend5: "90 €",
+  },
+  {
+    titel: "Eiskunstlauf",
+    erwachsene3: "170 €",
+    jugend3: "140 €",
+    erwachsene5: "280 €",
+    jugend5: "230 €",
+  },
+  {
+    titel: "Eishockey",
+    erwachsene3: "125 €",
+    jugend3: "100 €",
+    erwachsene5: "210 €",
+    jugend5: "165 €",
   },
 ]
 
@@ -814,8 +901,6 @@ function App() {
     </header>
 
 
-    <main>
-
       {/* ============ STARTSEITE ============ */}
       {aktiveSeite === "home" && (
         <>
@@ -837,6 +922,117 @@ function App() {
                 Beim Eissportverein H. e. V. findest du verschiedene Kurse und Trainingsangebote für unterschiedliche Alters- und Leistungsgruppen. 
                 Schau dir unsere aktuellen Angebote an und finde das passende Training für dich.
               </p>
+
+              {/* Sportarten */}
+            <div className="sport-overview">
+              <button
+                type="button"
+                className={`sport-info-card ${
+                  offeneSportCard === "eislaufschule" ? "open" : ""
+                }`}
+                style={{
+                  backgroundImage:
+                    "url('/images/gallery/eislaufschule-thumbnail.png')",
+                }}
+                onClick={() =>
+                  setOffeneSportCard(
+                    offeneSportCard === "eislaufschule"
+                      ? null
+                      : "eislaufschule"
+                  )
+                }
+              >
+                <div className="sport-info-content">
+                  <span className="sport-info-label">Erste Schritte</span>
+                  <h3>Eislaufschule</h3>
+
+                  <div className="sport-info-details">
+                    <p>
+                      Von deinen allerersten Schritten auf dem Eis über grundlegende Lauftechniken bis hin zu 
+                      fortgeschrittenen Bewegungsabläufen – hier entwickelst du
+                      Sicherheit, Technik und Freude am Eislaufen.
+                    </p>
+
+                    <span>Für verschiedene Altersgruppen</span>
+                    <span>Probetrainings & Schnupperkurse</span>
+                    <span>Schlittschuhverleih vor Ort</span>
+                  </div>
+                </div>
+              </button>
+
+
+              <button
+                type="button"
+                className={`sport-info-card ${
+                  offeneSportCard === "eiskunstlauf" ? "open" : ""
+                }`}
+                style={{
+                  backgroundImage:
+                    "url('/images/gallery/eiskunstlauf-thumbnail.png')",
+                }}
+                onClick={() =>
+                  setOffeneSportCard(
+                    offeneSportCard === "eiskunstlauf"
+                      ? null
+                      : "eiskunstlauf"
+                  )
+                }
+              >
+                <div className="sport-info-content">
+                  <span className="sport-info-label">Mit Eleganz aufs Eis</span>
+                  <h3>Eiskunstlauf</h3>
+
+                  <div className="sport-info-details">
+                    <p>
+                      Über sauberes Kantenlaufen und eleganten Figuren bis hin zu 
+                      Pirouetten, Sprüngen und ganzen Programmelementen – hier verbindest du Technik, 
+                      Bewegung und Ausdruck auf dem Eis.
+                    </p>
+
+                    <span>Für verschiedene Altersgruppen</span>
+                    <span>Anfänger:innen bis Fortgeschrittene</span>
+                    <span>Einzel- oder Gruppentraining</span>
+                  </div>
+                </div>
+              </button>
+
+
+              <button
+                type="button"
+                className={`sport-info-card ${
+                  offeneSportCard === "eishockey" ? "open" : ""
+                }`}
+                style={{
+                  backgroundImage:
+                    "url('/images/gallery/eishockey-thumbnail.png')",
+                }}
+                onClick={() =>
+                  setOffeneSportCard(
+                    offeneSportCard === "eishockey"
+                      ? null
+                      : "eishockey"
+                  )
+                }
+              >
+                <div className="sport-info-content">
+                  <span className="sport-info-label">Noch mehr Action</span>
+                  <h3>Eishockey</h3>
+
+                  <div className="sport-info-details">
+                    <p>
+                      Von sicherem Gleiten über Puckführung und Passspiel bis hin zu 
+                      Schuss- und Spielsituationen entwickelst 
+                      du deine Fähigkeiten auf dem Eis.
+                    </p>
+
+                    <span>Für verschiedene Altersgruppen</span>
+                    <span>Regelmäßiges Vereinstraining</span>
+                    <span>Leihausrüstung für Schnupperkurse verfügbar</span>
+                  </div>
+                </div>
+              </button>
+
+            </div>
 
               <div className="hero-ctas">
                 <button
@@ -886,9 +1082,253 @@ function App() {
 
             </div>
           </div>
+
+          {/* ============ PREISE ============ */}
+          <section className="pricing-section">
+
+              {/* ÖFFENTLICHE LAUFZEITEN */}
+              <div className="public-skating-prices">
+
+                <div className="pricing-subsection-heading">
+                  <span className="eyebrow">
+                    Vorbeikommen und loslaufen!
+                  </span>
+
+                  <h2>Öffentliche Laufzeiten</h2>
+
+                  <p>
+                    Für öffentliche Laufzeiten ist keine Kursbuchung erforderlich.
+                  </p>
+                </div>
+
+
+                <div className="public-skating-layout">
+
+                  {/* PREISE */}
+                  <div className="public-skating-card">
+
+                    <div className="price-table-head">
+                      <span></span>
+                      <span>Mo – Fr</span>
+                      <span>Sa – So</span>
+                    </div>
+
+                    <div className="price-row">
+                      <strong>Erwachsene</strong>
+                      <span>8 €</span>
+                      <span>10 €</span>
+                    </div>
+
+                    <div className="price-row">
+                      <strong>Kinder & Jugendliche</strong>
+                      <span>6 €</span>
+                      <span>8 €</span>
+                    </div>
+
+                    <div className="price-row">
+                      <strong>Familienkarte · 4 Personen</strong>
+                      <span>20 €</span>
+                      <span>26 €</span>
+                    </div>
+
+                    <span className="price-note">
+                      Eintrittspreis pro öffentlicher Laufzeit
+                    </span>
+
+                  </div>
+
+
+                  {/* LAUFZEITEN */}
+                  <aside className="skating-times-note">
+
+                    <span className="skating-times-label">
+                      Öffentliche Laufzeiten
+                    </span>
+
+                    <div className="skating-time">
+                      <strong>Mo – Fr</strong>
+                      <span>08:00 – 10:00 Uhr</span>
+                      <span>13:00 – 15:00 Uhr</span>
+                    </div>
+
+                    <div className="skating-time">
+                      <strong>Samstag</strong>
+                      <span>16:00 – 23:00 Uhr</span>
+                    </div>
+
+                    <div className="skating-time">
+                      <strong>Sonntag</strong>
+                      <span>16:00 – 22:00 Uhr</span>
+                    </div>
+                  </aside>
+                </div>
+              </div>
+
+
+              {/* KURSPREISE ÜBERSCHRIFT */}
+              <div className="pricing-header">
+                <span className="eyebrow">Kurse & Trainings</span>
+
+                <h2>Preisliste</h2>
+
+                <p>
+                  Kurse und Trainings müssen vorab online über die Rubrik „Buchung“
+                  gebucht werden.
+                </p>
+              </div>
+
+
+            {/* KURSPREISE */}
+            <div className="pricing-grid">
+
+              {preisBereiche.map((bereich) => (
+                <article className="price-card" key={bereich.titel}>
+
+                  <div className="price-card-header">
+                    <span>Kurse & Trainings</span>
+                    <h3>{bereich.titel}</h3>
+                  </div>
+
+                  <div className="price-table">
+
+                    <div className="price-table-head">
+                      <span></span>
+                      <span>Mo – Fr</span>
+                      <span>Sa – So</span>
+                    </div>
+
+                    {bereich.preise.map((preis) => (
+                      <div className="price-row" key={preis.name}>
+                        <strong>{preis.name}</strong>
+                        <span>{preis.werktag}</span>
+                        <span>{preis.wochenende}</span>
+                      </div>
+                    ))}
+
+                  </div>
+
+                  <span className="price-note">Preis pro Stunde</span>
+
+                </article>
+              ))}
+
+            </div>
+
+
+            {/* MEHRFACHKARTEN */}
+            <div className="pricing-subsection">
+
+              <div className="pricing-subsection-heading">
+                <span className="eyebrow">Mehr Eis. Mehr sparen.</span>
+                <h2>Deals & Angebote</h2>
+                <p>Unsere Mehrfachkarten gelten für Gruppenkurse der jeweiligen Sportart.</p>
+                <p>Eine öffentliche Laufzeit ist inklusive.</p>
+              </div>
+
+              <div className="deal-grid">
+
+                {mehrfachkarten.map((karte) => (
+                  <article className="deal-card" key={karte.titel}>
+
+                    <h3>{karte.titel}</h3>
+
+                    <div className="deal-group">
+                      <span>3er-Karte + Laufzeit gratis</span>
+
+                      <p>
+                        Erwachsene
+                        <strong>{karte.erwachsene3}</strong>
+                      </p>
+
+                      <p>
+                        Kinder & Jugendliche
+                        <strong>{karte.jugend3}</strong>
+                      </p>
+                    </div>
+
+                    <div className="deal-group">
+                      <span>5er-Karte + Laufzeit gratis</span>
+
+                      <p>
+                        Erwachsene
+                        <strong>{karte.erwachsene5}</strong>
+                      </p>
+
+                      <p>
+                        Kinder & Jugendliche
+                        <strong>{karte.jugend5}</strong>
+                      </p>
+                    </div>
+
+                  </article>
+                ))}
+
+              </div>
+
+            </div>
+
+
+            {/* MITGLIEDSCHAFT + VERLEIH */}
+            <div className="pricing-bottom-grid">
+
+              <article className="pricing-info-card">
+                <span className="eyebrow">Werde Teil unseres Teams</span>
+                <h3>Vereinsmitgliedschaft</h3>
+
+                <div className="simple-price-row">
+                  <span>Erwachsene</span>
+                  <strong>40 € / Monat</strong>
+                </div>
+
+                <div className="simple-price-row">
+                  <span>Jugendliche ab 12 Jahren</span>
+                  <strong>35 € / Monat</strong>
+                </div>
+
+                <div className="simple-price-row">
+                  <span>Kinder bis 11 Jahre</span>
+                  <strong>25 € / Monat</strong>
+                </div>
+
+                <div className="simple-price-row">
+                  <span>Passive Mitglieder</span>
+                  <strong>20 € / Monat</strong>
+                </div>
+              </article>
+
+
+              <article className="pricing-info-card">
+                <span className="eyebrow">Gut ausgestattet aufs Eis</span>
+                <h3>Verleih & Equipment</h3>
+
+                <div className="simple-price-row">
+                  <span>Eislaufschuhe</span>
+                  <strong>5 €</strong>
+                </div>
+
+                <div className="simple-price-row">
+                  <span>Eiskunstlaufschuhe</span>
+                  <strong>7 €</strong>
+                </div>
+
+                <div className="simple-price-row">
+                  <span>Eishockey-Ausrüstung</span>
+                  <strong>10 €</strong>
+                </div>
+
+                <div className="simple-price-row">
+                  <span>Helm, Schoner oder Laufhilfe</span>
+                  <strong>1 €</strong>
+                </div>
+
+                <span className="price-note">Preis pro Ausleihe</span>
+              </article>
+
+            </div>
+
+          </section>
         </>
       )}
-
 
       {/* ============ KURSE & TRAININGS ============ */}
       {aktiveSeite === "trainings" && (
@@ -1864,150 +2304,414 @@ function App() {
               Du bist interessiert am Eissport? Dann komm einfach zum
               Training vorbei! Ein Besuch lohnt sich!
             </p>
+          
+          <section className="about-feature about-feature-reverse">
+            <div className="about-feature-inner">
 
-            {/* Sportarten */}
-            <div className="sport-overview">
-              <button
-                type="button"
-                className={`sport-info-card ${
-                  offeneSportCard === "eislaufschule" ? "open" : ""
-                }`}
-                style={{
-                  backgroundImage:
-                    "url('/images/gallery/eislaufschule-thumbnail.png')",
-                }}
-                onClick={() =>
-                  setOffeneSportCard(
-                    offeneSportCard === "eislaufschule"
-                      ? null
-                      : "eislaufschule"
-                  )
-                }
-              >
-                <div className="sport-info-content">
-                  <span className="sport-info-label">Erste Schritte</span>
-                  <h3>Eislaufschule</h3>
+              <div className="about-feature-content">
+                <span className="eyebrow">Hier sind wir zuhause</span>
 
-                  <div className="sport-info-details">
-                    <p>
-                      Von deinen allerersten Schritten auf dem Eis über grundlegende Lauftechniken bis hin zu 
-                      fortgeschrittenen Bewegungsabläufen – hier entwickelst du
-                      Sicherheit, Technik und Freude am Eislaufen.
-                    </p>
+                <h2>Unsere Eissporthalle</h2>
 
-                    <span>Für verschiedene Altersgruppen</span>
-                    <span>Probetrainings & Schnupperkurse</span>
-                    <span>Schlittschuhverleih vor Ort</span>
+                <div className="about-info-group">
+                  <span className="about-info-title">
+                    Öffnungszeiten
+                  </span>
+
+                  <p>Montag – Freitag · 08:00 – 21:00 Uhr</p>
+                  <p>Samstag · 09:00 – 23:00 Uhr</p>
+                  <p>Sonntag · 10:00 – 22:00 Uhr</p>
+                </div>
+
+                <div className="about-info-group">
+                  <span className="about-info-title">
+                    Saison- & Schließzeiten
+                  </span>
+
+                  <p>12. September 2026 – 4. April 2027</p>
+                  <p>Geschlossen ab 5. April 2027</p>
+                </div>
+              </div>
+
+
+              <div className="about-feature-side">
+
+                <div className="about-feature-photo">
+                  <img
+                    src="/images/about/eishalle.png"
+                    alt="Eishalle des Eissportvereins"
+                  />
+                </div>
+
+
+                <div className="about-info-under-photo">
+                  <span className="about-info-title">
+                    Anfahrt & Kontakt
+                  </span>
+
+                  <div className="about-contact-grid">
+                    <div>
+                      <p>Beispielsstraße 1</p>
+                      <p>101010 Beispielstadt</p>
+                    </div>
+
+                    <div>
+                      <p>+49 2323-01010101</p>
+                      <p>info@eissportverein-h.de</p>
+                    </div>
                   </div>
                 </div>
-              </button>
 
-
-              <button
-                type="button"
-                className={`sport-info-card ${
-                  offeneSportCard === "eiskunstlauf" ? "open" : ""
-                }`}
-                style={{
-                  backgroundImage:
-                    "url('/images/gallery/eiskunstlauf-thumbnail.png')",
-                }}
-                onClick={() =>
-                  setOffeneSportCard(
-                    offeneSportCard === "eiskunstlauf"
-                      ? null
-                      : "eiskunstlauf"
-                  )
-                }
-              >
-                <div className="sport-info-content">
-                  <span className="sport-info-label">Mit Eleganz aufs Eis</span>
-                  <h3>Eiskunstlauf</h3>
-
-                  <div className="sport-info-details">
-                    <p>
-                      Über sauberes Kantenlaufen und eleganten Figuren bis hin zu 
-                      Pirouetten, Sprüngen und ganzen Programmelementen – hier verbindest du Technik, 
-                      Bewegung und Ausdruck auf dem Eis.
-                    </p>
-
-                    <span>Für verschiedene Altersgruppen</span>
-                    <span>Anfänger:innen bis Fortgeschrittene</span>
-                    <span>Einzel- oder Gruppentraining</span>
-                  </div>
-                </div>
-              </button>
-
-
-              <button
-                type="button"
-                className={`sport-info-card ${
-                  offeneSportCard === "eishockey" ? "open" : ""
-                }`}
-                style={{
-                  backgroundImage:
-                    "url('/images/gallery/eishockey-thumbnail.png')",
-                }}
-                onClick={() =>
-                  setOffeneSportCard(
-                    offeneSportCard === "eishockey"
-                      ? null
-                      : "eishockey"
-                  )
-                }
-              >
-                <div className="sport-info-content">
-                  <span className="sport-info-label">Noch mehr Action</span>
-                  <h3>Eishockey</h3>
-
-                  <div className="sport-info-details">
-                    <p>
-                      Von sicherem Gleiten über Puckführung und Passspiel bis hin zu 
-                      Schuss- und Spielsituationen entwickelst 
-                      du deine Fähigkeiten auf dem Eis.
-                    </p>
-
-                    <span>Für verschiedene Altersgruppen</span>
-                    <span>Regelmäßiges Vereinstraining</span>
-                    <span>Leihausrüstung für Schnupperkurse verfügbar</span>
-                  </div>
-                </div>
-              </button>
+              </div>
 
             </div>
-            
+          </section>
+
+          {/* ============ TRAINERTEAM ============ */}
+          <section className="about-feature about-feature-trainer">
+            <div className="about-feature-inner trainer-layout">
+
+              {/* Überschrift + Einleitung */}
+              <div className="trainer-heading">
+                <span className="eyebrow">Organisations- & Trainerteam</span>
+
+                <h2>Unser Team</h2>
+                  <p>
+                    Ob erste Schritte, neue Techniken oder gezieltes Training: 
+                    Unser Team begleitet dich mit Erfahrung, Motivation und Freude am Eissport.
+                    Dabei stehen individuelle Betreuung und deine persönliche Weiterentwicklung
+                    im Mittelpunkt.
+                  </p>
+              </div>
 
 
+              {/* Teamfoto */}
+              <div className="about-feature-photo trainer-photo">
+                <img
+                  src="/images/about/trainerteam.png"
+                  alt="Organisations- und Trainer:innen-Team des Eissportvereins"
+                />
 
-            <button
-              className="btn btn-primary"
-              type="button"
-              onClick={() => wechsleSeite("trainings")}
-            >
-              Kurse & Trainings ansehen
-            </button>
+                <span className="about-photo-label">
+                  Unser Team
+                </span>
+              </div>
+
+               {/* Text unter Foto + rechter Spalte */}
+              <p className="trainer-description">
+                Von links nach rechts: 
+                <span className="trainer-name"> Anna</span>,
+                <span className="trainer-name"> Vicky</span>,
+                <span className="trainer-name"> Dennis</span>,
+                <span className="trainer-name"> Frank</span> und
+                <span className="trainer-name"> Manuel</span>:
+
+                Anna und Dennis vermitteln Grundlagen im Eislaufen sowie erste
+                Techniken im Eiskunstlauf und Eishockey. Vicky betreut
+                fortgeschrittenes Eiskunstlauf mit Pirouetten, Figuren und
+                Sprungtraining, Frank das fortgeschrittene Eishockey- und
+                Mannschaftstraining. Manuel ist Teil des Vorstands und kümmert
+                sich um Organisation und Finanzen des Vereins.
+              </p>
+
+              <div className="trainer-extra">
+                <ul className="about-cred trainer-cred">
+                  <li>Lizenzierte & erfahrene Trainer:innen</li>
+                  <li>Verschiedene Alters- & Leistungsgruppen</li>
+                  <li>Langjährige Wettkampf- & Vereinserfahrung</li>
+                  <li>Einzel-, Gruppen- & Mannschaftstraining</li>
+                </ul>
+              </div>
+
+            </div>
+          </section>
+            <div className="hero-ctas">
+              <button
+                className="btn btn-primary"
+                type="button"
+                onClick={() => wechsleSeite("trainings")}
+              >
+                Kurse & Trainings ansehen
+              </button> 
+
+              <button
+                    className="btn btn-ghost on-light"
+                    type="button"
+                    onClick={() => setAktiveSeite("kalender")}
+                  >
+                    Kalenderübersicht anzeigen
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* ============ TESTIMONIALS ============ */}
+        <section className="testimonials-section">
+
+          <div className="testimonials-heading">
+            <span className="eyebrow">Was unsere Mitglieder und Kursteilnehmer:innen sagen...</span>
+            <h2>Bewertungen & Empfehlungen</h2>
+          </div>
+
+          <div className="testimonials-grid">
+
+            <article className="testimonial">
+              <span className="testimonial-quote">“</span>
+
+              <p>
+                Ich habe in der Eislaufschule angefangen und mich von Anfang an gut
+                aufgehoben gefühlt. Die Übungen werden verständlich erklärt und man
+                merkt schnell die ersten Fortschritte.
+              </p>
+
+              <div className="testimonial-person">
+                <strong>Lea</strong>
+                <span>Eislaufschule</span>
+              </div>
+            </article>
+
+
+            <article className="testimonial">
+              <span className="testimonial-quote">“</span>
+
+              <p>
+                Besonders gefällt mir, dass im Training auf unterschiedliche
+                Leistungsstände eingegangen wird. So kann ich an neuen Figuren arbeiten
+                und mich Schritt für Schritt weiterentwickeln.
+              </p>
+
+              <div className="testimonial-person">
+                <strong>Sophie</strong>
+                <span>Eiskunstlauf</span>
+              </div>
+            </article>
+
+
+            <article className="testimonial">
+              <span className="testimonial-quote">“</span>
+
+              <p>
+                Beim Eishockeytraining stimmen für mich sowohl die sportliche
+                Herausforderung als auch das Miteinander im Team. Die Atmosphäre macht
+                einfach unglaublich viel Spaß!
+              </p>
+
+              <div className="testimonial-person">
+                <strong>Jonas</strong>
+                <span>Eishockey</span>
+              </div>
+            </article>
 
           </div>
+
+          <span className="testimonial-note">
+            *Beispielhafte Stimmen für die Demonstration der Web-App.
+          </span>
+
         </section>
 
       </div>
     )}
 
 
-      {/* ============ KONTAKT ============ */}
-      {aktiveSeite === "kontakt" && (
-        <section className="block" id="contact">
-          <div className="section-head">
-            <span className="eyebrow">Kontakt</span>
-            <h1>Kontakt</h1>
-            <p>
-              Das Kontaktformular wird in einem späteren Sprint umgesetzt.
-            </p>
-          </div>
-        </section>
-      )}
+    {/* ============ KONTAKT ============ */}
+    {aktiveSeite === "kontakt" && (
+      <section className="contact-section" id="contact">
 
-    </main>
+        <div className="contact-inner">
+
+          {/* KONTAKTINFOS */}
+          <div className="contact-info">
+
+            <span className="eyebrow">Wir sind für dich da</span>
+
+            <h1>Kontaktformular</h1>
+
+            <p className="contact-intro">
+              Hast du weitere Fragen oder Anliegen oder möchtest du ein erstes
+              Probetraining oder einen Schnupperkurs vereinbaren? Schicke uns deine
+              Nachricht über das Kontaktformular oder alternativ per E-Mail an{" "}
+              <a href="mailto:info@eissportverein-h.de">
+                info@eissportverein-h.de
+              </a>.
+            </p>
+
+
+            <div className="contact-details">
+
+              <div className="contact-detail">
+                <span>Anschrift</span>
+                <p>
+                  Beispielsstraße 1<br />
+                  101010 Beispielstadt
+                </p>
+              </div>
+
+              <div className="contact-detail">
+                <span>Öffnungszeiten Verwaltung</span>
+                <p>Mo – Fr · 08:00 – 16:00 Uhr</p>
+              </div>
+
+              <div className="contact-detail">
+                <span>E-Mail</span>
+                <a href="mailto:info@eissportverein-h.de">
+                  info@eissportverein-h.de
+                </a>
+              </div>
+
+              <div className="contact-detail">
+                <span>Telefon</span>
+                <a href="tel:+49232301010101">
+                  +49 2323-01010101
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          {/* KONTAKTFORMULAR */}
+          <form
+            className="contact-form"
+            onSubmit={(e) => {
+              e.preventDefault()
+
+              alert(
+                "Vielen Dank für deine Nachricht!\n\nDies ist ein Demo-Kontaktformular."
+              )
+
+              e.currentTarget.reset()
+            }}
+          >
+
+            <div className="contact-form-grid">
+
+              <div className="contact-field">
+                <label htmlFor="kontakt-vorname">
+                  Vorname
+                </label>
+
+                <input
+                  id="kontakt-vorname"
+                  type="text"
+                  placeholder="Vorname"
+                  required
+                />
+              </div>
+
+
+              <div className="contact-field">
+                <label htmlFor="kontakt-nachname">
+                  Nachname
+                </label>
+
+                <input
+                  id="kontakt-nachname"
+                  type="text"
+                  placeholder="Nachname"
+                  required
+                />
+              </div>
+
+
+              <div className="contact-field">
+                <label htmlFor="kontakt-email">
+                  E-Mail
+                </label>
+
+                <input
+                  id="kontakt-email"
+                  type="email"
+                  placeholder="name@beispiel.de"
+                  required
+                />
+              </div>
+
+
+              <div className="contact-field">
+                <label htmlFor="kontakt-telefon">
+                  Telefon <span>optional</span>
+                </label>
+
+                <input
+                  id="kontakt-telefon"
+                  type="tel"
+                  placeholder="+49 ..."
+                />
+              </div>
+
+
+              <div className="contact-field full-width">
+                <label htmlFor="kontakt-betreff">
+                  Betreff
+                </label>
+
+                <select
+                  id="kontakt-betreff"
+                  defaultValue=""
+                  required
+                >
+                  <option value="" disabled>
+                    Bitte auswählen
+                  </option>
+
+                  <option value="allgemein">
+                    Allgemeine Frage
+                  </option>
+
+                  <option value="probetraining">
+                    Probetraining / Schnupperkurs
+                  </option>
+
+                  <option value="kurs">
+                    Kurs & Buchung
+                  </option>
+
+                  <option value="mitgliedschaft">
+                    Vereinsmitgliedschaft
+                  </option>
+
+                  <option value="mitgliedschaft">
+                    Finanzen
+                  </option>
+
+                  <option value="sonstiges">
+                    Sonstiges
+                  </option>
+                </select>
+              </div>
+
+
+              <div className="contact-field full-width">
+                <label htmlFor="kontakt-nachricht">
+                  Nachricht
+                </label>
+
+                <textarea
+                  id="kontakt-nachricht"
+                  rows="6"
+                  placeholder="Wie können wir dir helfen?"
+                  required
+                ></textarea>
+              </div>
+
+            </div>
+
+
+            <button
+              className="btn btn-primary contact-submit"
+              type="submit"
+            >
+              Nachricht senden
+            </button>
+
+          </form>
+
+        </div>
+
+      </section>
+    )}
 
 
     {/* ============ FOOTER ============ */}
